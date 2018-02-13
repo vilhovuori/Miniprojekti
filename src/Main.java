@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Main {
 
     static Room presentRoom;
+    static int ilmansuunta;
     static Map<Integer,Room> map = new HashMap<>();
     static {
 
@@ -20,7 +21,8 @@ public class Main {
         map.put(huone.getRoomNumber(), huone);
         huone = new Room("Toilet", 5, "The toilet, or so you at least think", new int[]{0, -1, -1, -1});
         map.put(huone.getRoomNumber(), huone);
-        presentRoom = huone.setRoomNumber();
+        presentRoom = map.get(4);
+        System.out.println(presentRoom);
     }
 
     public static void main(String[] args) {
@@ -41,9 +43,11 @@ public class Main {
         String kasky1 = komentoOsa [0].toUpperCase();
         String kasky2 = komentoOsa [1].toUpperCase();
         if (kasky1 =="GO"){
-            ui.go(kasky2);
+        ilmansuunta =ui.go(kasky2);
+
         }
-        presentRoom = (ui.go (kasky2));
+
+       presentRoom = presentRoom.getRoomNumber(ilmansuunta);
 
 
 
