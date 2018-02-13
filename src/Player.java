@@ -1,6 +1,7 @@
 public class Player {
-
-    private String playername;
-    public void setPlayerName(String playerNameParam);
+//
+//    private String playername;
+//    public void setPlayerName(String playerNamePar);
 }
-    playerName = playerNameParam;
+//    playerName = playerNamePar;
+//}
