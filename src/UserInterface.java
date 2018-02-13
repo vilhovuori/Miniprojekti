@@ -1,5 +1,8 @@
 public class UserInterface {
 
+    public String action(String command){
+        return help();
+    }
 
     public String go() {
         return "GO";
