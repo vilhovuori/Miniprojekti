@@ -12,6 +12,7 @@ public class Room {
         this.roomNumber = roomNumber;
         this.description = description;
         this.directions = directions;
+        
 
     }
 
