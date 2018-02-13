@@ -7,12 +7,12 @@ public class Room {
 
 
 
+
     public Room (String name, int roomNumber, String description, int [] directions  ) {
         this.name = name;
         this.roomNumber = roomNumber;
         this.description = description;
         this.directions = directions;
-        
 
     }
 
@@ -37,5 +37,9 @@ public class Room {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int[] getDirections() {
+        return directions;
     }
 }
