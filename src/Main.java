@@ -6,7 +6,8 @@ public class Main {
 
     static Room presentRoom;
     static int ilmansuunta;
-    static Map<Integer,Room> map = new HashMap<>();
+    static Map<Integer, Room> map = new HashMap<>();
+
     static {
 
         Room huone = new Room("Cafeteria", 0, "The cafeteria, or so you at least think", new int[]{-1, 1, 5, -1});
@@ -28,49 +29,33 @@ public class Main {
     public static void main(String[] args) {
         UserInterface ui = new UserInterface();
 
-    Scanner scanner = new Scanner (System.in);
-    Player player = new Player ();
-    System.out.println("Welcome to JavaQuest, may I know your name so we can start writing your tombstone?");
+        Scanner scanner = new Scanner(System.in);
+        Player player = new Player();
+        System.out.println("Welcome to JavaQuest, may I know your name so we can start writing your tombstone?");
 
 //    String name = Scanner.nextLine ();
 //    player.setPlayerName (name);
-
-        System.out.println("What you wish to do");
-        String komento = scanner.nextLine();
+        while (true) {
+            System.out.println("What you wish to do");
+            String komento = scanner.nextLine();
 
 //        System.out.println(ui.action(komento));
-        String [] komentoOsa = komento.split(" ");
-        String kasky1 = komentoOsa [0].toUpperCase();
-        String kasky2 = komentoOsa [1].toUpperCase();
-        if (kasky1 =="GO"){
-        ilmansuunta =ui.go(kasky2);
-
+            String[] komentoOsa = komento.split(" ");
+            String kasky1 = komentoOsa[0].toUpperCase();
+            String kasky2 = komentoOsa[1].toUpperCase();
+            if (kasky1 == "GO") {
+                ilmansuunta = ui.go(kasky2);
+                System.out.println(ilmansuunta);
+            }
+//            if (map.get(presentRoom.getDirections()[ilmansuunta]).equals(-1)) {
+//                System.out.println("You cannot go to that direction.");
+//            } else {
+                presentRoom = map.get(presentRoom.getDirections()[ilmansuunta]);
+                System.out.println(presentRoom.getDescription());
+            }
         }
 
-      // presentRoom = presentRoom.;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
-
-}
-
 
 
 
