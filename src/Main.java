@@ -45,7 +45,7 @@ public class Main {
             String kasky2 = komentoOsa[1].toUpperCase();
             if (kasky1 == "GO") {
                 ilmansuunta = ui.go(kasky2);
-                System.out.println(ilmansuunta);
+                System.out.println(ilmansuunta + " Ilmansuunta");
             }
 //            if (map.get(presentRoom.getDirections()[ilmansuunta]).equals(-1)) {
 //                System.out.println("You cannot go to that direction.");
