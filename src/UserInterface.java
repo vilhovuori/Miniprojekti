@@ -2,12 +2,12 @@ import java.util.Map;
 
 public class UserInterface {
 
-    public String action(String command) {
-        if (command == "GO") {
-            return go();
-        }
-        return "virhetilanne";
-    }
+//    public String action(String command) {
+//        if (command == "GO") {
+//            return go();
+//        }
+//        return "virhetilanne";
+//    }
 
     public int go(String direction) {
         int d;
