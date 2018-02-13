@@ -1,12 +1,18 @@
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
 
-
-
-    Room office = new Room("toimisto", 2, "The office, or so you at least think", new int[]{-1,-1,3,1});
-    Room meeting = new Room("meeting", 3, "The meeting, or so you at least think", new int[]{2,-1,-1,-1});
-    int position = office.getRoomNumber();
+    static Room presentRoom;
+    static Map<Integer,Room> map = new HashMap<>();
+    static {
+        Room huone = new Room("toimisto", 2, "The office, or so you at least think", new int[]{-1, -1, 3, 1});
+        map.put(huone.getRoomNumber(), huone);
+        presentRoom = huone;
+        huone = new Room("meeting", 3, "The meeting, or so you at least think", new int[]{2, -1, -1, -1});
+        map.put(huone.getRoomNumber(), huone);
+    }
 
 
     public static void main(String[] args) {
@@ -23,6 +29,10 @@ public class Main {
         String komento = scanner.nextLine();
 
         System.out.println(ui.action(komento));
+        String [] komentoOsa = komento.split(" ");
+        String kasky1 = komentoOsa [0].toUpperCase();
+        String kasky2 = komentoOsa [1].toUpperCase();
+
 
 
 
