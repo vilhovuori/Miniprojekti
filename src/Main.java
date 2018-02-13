@@ -47,7 +47,7 @@ public class Main {
 
         }
 
-       presentRoom = presentRoom.getRoomNumber(ilmansuunta);
+      // presentRoom = presentRoom.;
 
 
 
