@@ -23,7 +23,7 @@ public class Main {
         huone = new Room("Toilet", 5, "The toilet, or so you at least think", new int[]{0, -1, -1, -1});
         map.put(huone.getRoomNumber(), huone);
         presentRoom = map.get(4);
-        System.out.println(presentRoom);
+        System.out.println(presentRoom.getDescription());
     }
 
     public static void main(String[] args) {
@@ -43,21 +43,21 @@ public class Main {
             String[] komentoOsa = komento.split(" ");
             String kasky1 = komentoOsa[0].toUpperCase();
             String kasky2 = komentoOsa[1].toUpperCase();
-            if (kasky1 == "GO") {
+            if (kasky1.equals("GO")) {
                 ilmansuunta = ui.go(kasky2);
-                System.out.println(ilmansuunta + " Ilmansuunta");
+                System.out.println(ui.go(kasky2) + " Ilmansuunta");
             }
-//            if (map.get(presentRoom.getDirections()[ilmansuunta]).equals(-1)) {
-//                System.out.println("You cannot go to that direction.");
-//            } else {
+            int naapuriHuone = presentRoom.getDirections()[ilmansuunta];
+            if (naapuriHuone == -1) {
+                System.out.println("You cannot go to that direction.");
+            } else {
                 presentRoom = map.get(presentRoom.getDirections()[ilmansuunta]);
                 System.out.println(presentRoom.getDescription());
             }
         }
 
     }
-
-
+}
 
 
 //    class action{}
