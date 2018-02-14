@@ -31,11 +31,11 @@ public class VilleI {
         UserInterface ui = new UserInterface();
 
         Scanner scanner = new Scanner(System.in);
-        Player player = new Player();
-        System.out.println("Welcome to JavaQuest, may I know your name so we can start writing your tombstone?");
+//        Player player = new Player();
+//        System.out.println("Welcome to JavaQuest, may I know your name so we can start writing your tombstone?");
 
-        String name = Scanner.nextLine();
-        player.setPlayerName (name);
+//        String name = scanner.nextLine();
+//        player.setPlayerName (name);
 
         while (true) {
             System.out.println("What you wish to do");
@@ -63,53 +63,55 @@ public class VilleI {
 
             Random randomGenerator = new Random();
             int playerRandomDamage = randomGenerator.nextInt(20);
-            int zombieRandomDamage = randomGenerator.nextInt(10);
-            int playerHealth = 30;
+            int zombieRandomDamage = randomGenerator.nextInt(20);
+            int playerHealth = 20;
             int playerDamage = playerRandomDamage;
             int zombieHealth = 10;
             int zombieDamage = zombieRandomDamage;
 
 
-            while (VilleI.presentRoom ==building.get (2) ) {
+
+            while (VilleI.presentRoom ==building.get (2)&& zombieHealth ==10 ) {
                 System.out.println("By the holy coffee beans, you have encountered a zombie, Coffee Zombie! " +
                         "Time to take out your weapons, hopefully you brought more then your lefty and right.");
 
                 while (true) {
 
                     System.out.println("Fight, what do you want to use?");
-                    String taisteluToiminto = scanner.nextLine();
-                    if (taisteluToiminto.equals("use knife")){
-                        int damageDealt= (zombieHealth - playerDamage);
-                        int damageReceived= (playerHealth - zombieDamage);
+                    System.out.println("Your HP:" + playerHealth + " " + "Zombi HP:" +zombieHealth);
+                    String taisteluToiminto = scanner.nextLine().toUpperCase();
+                    if (taisteluToiminto.equals("USE KNIFE")){
+                        zombieHealth -= playerDamage;
+                        playerHealth -= zombieDamage;
+//                        int damageReceived= (playerHealth - zombieDamage);
+
+                        if (zombieHealth > 0 && playerHealth > 0) {
+                            System.out.println("It lives so...");
+                        }
+
+                        else if (zombieHealth > 0 && playerHealth <= 0) {
+                            System.out.println("Coffee zombie lives, you do not");
+                            break;
+
+                        } else {
+                            System.out.println("You are victorious");
+                            break;
+                        }} else {
+                        System.out.println("You don't need to use your head literally, but it is indeed needed to type something that is asked of you!");
                     }
 
-                    //hitpontosat
 
-
-                    if (zombieHealth > 0 || playerHealth > 0) {
-                        System.out.println("It lives so...");
-                    }
-
-                    if (zombieHealth > 0 || playerHealth <= 0) {
-                        System.out.println("Coffee zombie lives, you do not");
-                        scanner.close();
-                        break;
-
-                    } else {
-                        System.out.println("You are victorious");
-                        scanner.close();
-                        break;
-                    }
                 }
             }
-
-
-
-
-
         }
+
+
+
+
+
     }
 }
+
 
 
 //    class action{}
