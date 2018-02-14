@@ -47,8 +47,10 @@ public class Main {
                 ilmansuunta = ui.go(kasky2);
                 System.out.println(ui.go(kasky2) + " Ilmansuunta");
             }
-            int naapuriHuone = presentRoom.getDirections()[ilmansuunta];
-            if (naapuriHuone == -1) {
+
+                int adjacentRoom = presentRoom.getDirections()[ilmansuunta];
+
+            if (adjacentRoom == -1 ) {
                 System.out.println("You cannot go to that direction.");
             } else {
                 presentRoom = map.get(presentRoom.getDirections()[ilmansuunta]);
