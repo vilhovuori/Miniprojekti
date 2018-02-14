@@ -103,15 +103,15 @@ public class Main {
                         System.out.println(presentRoom.getDescription());
 
                 } else if (verb.equals("TAKE") && Item.löytyyköTargetHuoneesta(target, itemit)){
-                   //     if (Item.inventory.contains(target)) {
-                    //        System.out.println("You already have this item");
-                    //    } else {
-                            System.out.println("You picked up the " + target);
-                            otettuEsine = ui.take(target);
+                        otettuEsine = ui.take(target);
+                                if (Item.inventory.contains(otettuEsine)) {
+                           System.out.println("You already have this item");
+                        } else {
+                            System.out.println("You picked up the " + otettuEsine);
 
                             Item.inventory.add(otettuEsine);
                             System.out.println(Item.inventory);
-                    //    }
+                        }
                 } else {
                     System.out.println("Your command does not make any sense. Try again.");
                 }
