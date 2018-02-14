@@ -45,7 +45,7 @@ public class Main {
         Item coffeeKey = new Item("Avain keittimeen", building.get(3), "kahvinkeitin");
         Item letter = new Item ("kirje", building.get(1), null );
 
-        Item.inventory.add("FISTS");
+        Item.inventory.add("fist");
 
         HashMap<String, Item> itemit = new HashMap<>();
         itemit.put("KNIFE", knife);
@@ -104,17 +104,23 @@ public class Main {
 
                     }
                 } else if (verb.equals("TAKE") && Item.löytyyköTargetHuoneesta(target, itemit)){
-                    System.out.println("You picked up the " + target);
-                    otettuEsine = ui.take(target);
+                   //     if (Item.inventory.contains(target)) {
+                    //        System.out.println("You already have this item");
+                    //    } else {
+                            System.out.println("You picked up the " + target);
+                            otettuEsine = ui.take(target);
 
-                    Item.inventory.add(otettuEsine);
-                    System.out.println(Item.inventory);
-
+                            Item.inventory.add(otettuEsine);
+                            System.out.println(Item.inventory);
+                    //    }
                 } else {
                     System.out.println("Your command does not make any sense. Try again.");
                 }
             } catch (ArrayIndexOutOfBoundsException ex) {
-                System.out.println("invalid command");
+                System.out.println("Are you stupid? You can't do that.");
+                continue;
+            } catch (NullPointerException ex) {
+                System.out.println("What were you thinking?!? You can't do that..");
                 continue;
             }
 
