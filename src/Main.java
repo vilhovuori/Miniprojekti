@@ -43,7 +43,14 @@ public class Main {
 //        System.out.println(ui.action(command));
                 String[] commandPart = command.split(" ");
                 String verb = commandPart[0].toUpperCase(); //verb part
-                String target = commandPart[1].toUpperCase(); //target part
+                String target = null;
+                if (commandPart.length > 1) {
+                    target = commandPart[1].toUpperCase(); //target part
+                }
+                if (commandPart[0].equals("SEARCH")) {
+                    presentRoom = building.get(presentRoom.getDirections()[compassPoint]);
+                    System.out.println(presentRoom.getDescription());
+                }
                 if (verb.equals("GO") && (target.matches("NORTH|SOUTH|EAST|WEST"))) { //
                     compassPoint = ui.go(target);
 
@@ -58,14 +65,9 @@ public class Main {
                     System.out.println("Your command does not make any sense. Try again.");
                 }
             } catch (ArrayIndexOutOfBoundsException ex) {
-                System.out.println("invalid command" );
+                System.out.println("invalid command");
                 continue;
             }
-
-
-
-
-
 
 
         }
