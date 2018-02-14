@@ -5,10 +5,10 @@ import java.util.List;
 public class Item {
 
     private String itemName;
-    private int itemLocation;
+    private Room itemLocation;
     private String itemTarget;
 
-    public Item (String itemName, int itemLocation, String itemTarget){
+    public Item (String itemName, Room itemLocation, String itemTarget){
         this.itemName = itemName;
         this.itemLocation = itemLocation;
         this.itemTarget = itemTarget;
@@ -28,24 +28,26 @@ public class Item {
         this.itemName = itemName;
     }
 
-    public int getItemLocation() {
+    public Room getItemLocation() {
         return itemLocation;
     }
 
-    public void setItemLocation(int itemLocation) {
+    public void setItemLocation(Room itemLocation) {
         this.itemLocation = itemLocation;
     }
 
-    public Object[] getItemTarget() {
+    public String getItemTarget() {
         return itemTarget;
     }
 
-    public void setItemTarget(String[] itemTarget) {
+    public void setItemTarget(String itemTarget) {
         this.itemTarget = itemTarget;
     }
 
-
     static {
-        Item veitsi = new Item("veitsi", Main.building.get() , "Zombie");
+        Item veitsi = new Item("veitsi", Tiina.building.get(0) , "Zombie");
+        Item avainOvi = new Item ("avainOvi", Tiina.building.get(2), "lukko");
+        Item kahvi = new Item("kahvi", Tiina.building.get(0), "kahvinkeitin");
+        Item avainKeitin = new Item("Avain keittimeen", Tiina.building.get(3), "kahvinkeitin");
     }
 }
