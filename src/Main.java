@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -33,8 +34,8 @@ public class Main {
         Player player = new Player();
         System.out.println("Welcome to JavaQuest, may I know your name so we can start writing your tombstone?");
 
-//    String name = Scanner.nextLine ();
-//    player.setPlayerName (name);
+    String name = scanner.nextLine ();
+    player.setPlayerName (name);
         while (true) {
             try {
                 System.out.println("What you wish to do");
@@ -67,6 +68,49 @@ public class Main {
             } catch (ArrayIndexOutOfBoundsException ex) {
                 System.out.println("invalid command");
                 continue;
+            }
+
+            Random randomGenerator = new Random();
+            int playerRandomDamage = randomGenerator.nextInt(20);
+            int zombieRandomDamage = randomGenerator.nextInt(20);
+            int playerHealth = 20;
+            int playerDamage = playerRandomDamage;
+            int zombieHealth = 15;
+            int zombieDamage = zombieRandomDamage;
+
+
+
+            while (presentRoom ==building.get (2)&& zombieHealth ==15 ) {
+                System.out.println("By the holy coffee beans, you have encountered a zombie, Coffee Zombie! " +
+                        "Time to take out your weapons, hopefully you brought more then your lefty and right.");
+
+                while (true) {
+
+                    System.out.println("Fight, what do you want to use?");
+                    System.out.println("Your HP:" + playerHealth + " " + "Coffee zombie's HP:" +zombieHealth);
+                    String taisteluToiminto = scanner.nextLine().toUpperCase();
+                    if (taisteluToiminto.equals("USE KNIFE")){
+                        zombieHealth -= playerDamage;
+                        playerHealth -= zombieDamage;
+//                        int damageReceived= (playerHealth - zombieDamage);
+
+                        if (zombieHealth > 0 && playerHealth > 0) {
+                            System.out.println("It lives so...");
+                        }
+
+                        else if (zombieHealth > 0 && playerHealth <= 0) {
+                            System.out.println("Coffee zombie lives, you do not");
+                            break;
+
+                        } else {
+                            System.out.println("You are victorious");
+                            break;
+                        }} else {
+                        System.out.println("You don't need to use your head literally, but it is indeed needed to type something that is asked of you!");
+                    }
+
+
+                }
             }
 
 

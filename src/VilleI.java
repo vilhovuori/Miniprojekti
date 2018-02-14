@@ -78,7 +78,7 @@ public class VilleI {
                 while (true) {
 
                     System.out.println("Fight, what do you want to use?");
-                    System.out.println("Your HP:" + playerHealth + " " + "Zombi HP:" +zombieHealth);
+                    System.out.println("Your HP:" + playerHealth + " " + "Coffee zombie's HP:" +zombieHealth);
                     String taisteluToiminto = scanner.nextLine().toUpperCase();
                     if (taisteluToiminto.equals("USE KNIFE")){
                         zombieHealth -= playerDamage;
