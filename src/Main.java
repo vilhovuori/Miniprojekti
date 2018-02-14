@@ -75,6 +75,7 @@ public class Main {
 
     String name = scanner.nextLine ();
     player.setPlayerName (name);
+        System.out.println(presentRoom.getDescription());
         while (true) {
             try {
                 System.out.println("What you wish to do, " + name + "?");
