@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -48,13 +52,28 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         Player player = new Player();
+        String tulos = null;
+        try (FileReader fr = new FileReader("Miniprojekti/title.txt");
+             BufferedReader in = new BufferedReader(fr)){
+            StringBuilder teksti = new StringBuilder();
+            String rivi;
+            while ((rivi = in.readLine()) != null) {
+                teksti.append(rivi).append("\n");
+            }
+            tulos = teksti.toString();
+            System.out.println(tulos);
+        } catch (FileNotFoundException ex) {
+            System.out.println("Virhe: tiedostoa ei löytynyt");
+        } catch (IOException ex) {
+            System.out.println("Virhe: muu virhe lukiessa");
+        }
         System.out.println("Welcome to JavaQuest, may I know your name so we can start writing your tombstone?");
 
     String name = scanner.nextLine ();
     player.setPlayerName (name);
         while (true) {
             try {
-                System.out.println("What you wish to do");
+                System.out.println("What you wish to do, " + name + "?");
                 String command = scanner.nextLine();
 
 //        System.out.println(ui.action(command));
