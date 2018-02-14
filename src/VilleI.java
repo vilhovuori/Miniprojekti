@@ -31,14 +31,14 @@ public class VilleI {
         UserInterface ui = new UserInterface();
 
         Scanner scanner = new Scanner(System.in);
-//        Player player = new Player();
-//        System.out.println("Welcome to JavaQuest, may I know your name so we can start writing your tombstone?");
+        Player player = new Player();
+        System.out.println("Welcome to JavaQuest, may I know your name so we can start writing your tombstone?");
 
-//        String name = scanner.nextLine();
-//        player.setPlayerName (name);
+        String name = scanner.nextLine();
+        player.setPlayerName (name);
 
         while (true) {
-            System.out.println("What you wish to do");
+            System.out.println("What"+ " "+ name + " wish to do");
             String command = scanner.nextLine();
 
 //        System.out.println(ui.action(command));
