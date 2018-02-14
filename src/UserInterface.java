@@ -51,8 +51,9 @@ public class UserInterface {
                 break;
             case "LETTER":
                 e = "letter";
+                break;
             default:
-                e = "There is no such item";
+                e = "there is no such item";
         }
         return e;
 
