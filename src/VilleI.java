@@ -80,8 +80,8 @@ public class VilleI {
                         System.out.println("Fight, what do you want to use?");
                         String taisteluToiminto = scanner.nextLine();
                         if (taisteluToiminto.equals("use knife")){
-                            int damageDealt;
-                            int damageReceived;
+//                            int damageDealt;
+//                            int damageReceived;
                         }
 
 
