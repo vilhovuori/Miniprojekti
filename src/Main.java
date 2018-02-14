@@ -84,10 +84,8 @@ public class Main {
 //        System.out.println(ui.action(command));
                 String[] commandPart = command.split(" ");
                 String verb = commandPart[0].toUpperCase(); //verb part
-                String target = null;
-                if (commandPart.length > 1) {
-                    target = commandPart[1].toUpperCase(); //target part
-                }
+                String target = commandPart[1].toUpperCase();
+
                 if (verb.equals("SEARCH")&& target.equals("ROOM")) {
                     presentRoom = building.get(presentRoom.getDirections()[compassPoint]);
                     System.out.println(presentRoom.getDescription());
