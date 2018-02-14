@@ -125,7 +125,7 @@ public class Main {
             }
 
             Random randomGenerator = new Random();
-            int playerRandomDamage = randomGenerator.nextInt(20);
+            int playerRandomDamage = randomGenerator.nextInt(15);
             int zombieRandomDamage = randomGenerator.nextInt(20);
             int playerHealth = 20;
             int playerDamage = playerRandomDamage;
@@ -144,12 +144,10 @@ public class Main {
                     System.out.println("Your HP:" + playerHealth + " " + "Coffee zombie's HP:" +zombieHealth);
                     String taisteluToiminto = scanner.nextLine().toUpperCase();
                     if (Item.inventory.contains(knife)) {
-                        playerDamage += 5;
-                    }
-                    if (taisteluToiminto.equals("USE KNIFE")){
+                        playerDamage += 5;}
+                    if (taisteluToiminto.matches("KNIFE|FISTS")){
                         zombieHealth -= playerDamage;
                         playerHealth -= zombieDamage;
-//                        int damageReceived= (playerHealth - zombieDamage);
 
                         if (zombieHealth > 0 && playerHealth > 0) {
                             System.out.println("It lives so...");
