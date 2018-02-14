@@ -44,7 +44,7 @@ public class Juuso {
             String verb = commandPart[0].toUpperCase(); //verb part
             String target = commandPart[1].toUpperCase(); //target part
             if (verb.equals("GO") &&(target.matches("NORTH|SOUTH|EAST|WEST"))) { //
-                compassPoint = ui.go(target);
+                compassPoint = ui.o(target);
 
                 int adjacentRoom = presentRoom.getDirections()[compassPoint];
                 if (adjacentRoom == -1) {
