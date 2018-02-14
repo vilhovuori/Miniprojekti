@@ -2,10 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -123,6 +120,15 @@ public class Main {
                 System.out.println("What were you thinking?!? You can't do that..");
                 continue;
             }
+                String[] nimet = new String[]{
+                        "Aino", "Aleksi H.", "Aleksi P.", "Jani", "Johanna J.", "Heidi K", "Joni",
+                        "Tom", "Juuso", "Hanna-Leena", "Johanna L.", "Milla", "Vellu", "Heidi N",
+                        "Sami", "Outi", "Elina", "Renne", "Olli", "Toni", "Paula", "Leena", "Nikita",
+                        "Tiina K.", "Tiina E.", "Antti", "Ville", "Waltteri", "Satu", "Tommi", "Samu"
+                };
+                List<String> nimilista = new ArrayList<>(Arrays.asList(nimet));
+                Collections.shuffle(nimilista);
+                String randomnimi = nimilista.get(0);
 
             Random randomGenerator = new Random();
             int playerRandomDamage = randomGenerator.nextInt(15);
@@ -131,11 +137,12 @@ public class Main {
             int playerDamage = playerRandomDamage;
             int zombieHealth = 15;
             int zombieDamage = zombieRandomDamage;
+            String zombieName = randomnimi;
 
 
 
             while (presentRoom ==building.get (2)&& zombieHealth ==15 ) {
-                System.out.println("By the holy coffee beans, you have encountered a zombie, Coffee Zombie! " +
+                System.out.println("By the holy coffee beans, you have encountered a zombie, Coffee Zombie that creeps by the name of" + " "+ randomnimi+"!" +" " +
                         "Time to take out your weapons, hopefully you brought more then your lefty and right.");
 
                 while (true) {
