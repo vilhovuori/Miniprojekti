@@ -1,4 +1,5 @@
 import java.lang.annotation.Target;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -44,10 +45,15 @@ public class Item {
         this.itemTarget = itemTarget;
     }
 
-    static {
-        Item veitsi = new Item("veitsi", Tiina.building.get(0) , "Zombie");
-        Item avainOvi = new Item ("avainOvi", Tiina.building.get(2), "lukko");
-        Item kahvi = new Item("kahvi", Tiina.building.get(0), "kahvinkeitin");
-        Item avainKeitin = new Item("Avain keittimeen", Tiina.building.get(3), "kahvinkeitin");
+    static ArrayList <Item> inventory = new ArrayList<>();
+
+
+    {
+        Item knife = new Item("veitsi", Tiina.building.get(0) , "Zombie");
+        Item doorKey = new Item ("Avain oveen", Tiina.building.get(2), "lukko");
+        Item coffee = new Item("kahvi", Tiina.building.get(0), "kahvinkeitin");
+        Item coffeeKey = new Item("Avain keittimeen", Tiina.building.get(3), "kahvinkeitin");
+        Item letter = new Item ("kirje", Tiina.building.get(1), null );
     }
+
 }
