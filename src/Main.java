@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Juuso {
+public class Main {
 
     static Room presentRoom;
     static int compassPoint;
