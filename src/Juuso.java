@@ -36,7 +36,7 @@ public class Juuso {
 //    String name = Scanner.nextLine ();
 //    player.setPlayerName (name);
         while (true) {
-            System.out.println("What you wish to do");
+            System.out.println("What you wish to doi");
             String command = scanner.nextLine();
 
 //        System.out.println(ui.action(command));
