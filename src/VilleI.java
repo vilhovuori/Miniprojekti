@@ -240,7 +240,7 @@ public static void main(String[] args) {
 
         while (true) {
 
-        System.out.println("Fight, what do you want to use?");
+        System.out.println("Fight, what do you want to use?"); //knife or fists to take up this channel
         System.out.println("Your HP:" + playerHealth + " " + "Coffee zombie's HP:" +zombieHealth);
         String taisteluToiminto = scanner.nextLine().toUpperCase();
         if (Item.inventory.contains(knife)) {
@@ -277,7 +277,7 @@ public static void main(String[] args) {
 
 
 
-
+ // But for how long does it stay dead and you in the books of the living.
 //    class action{}
 //
 //    class actionTarget{}
