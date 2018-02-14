@@ -86,10 +86,7 @@ public class Main {
                 String verb = commandPart[0].toUpperCase(); //verb part
                 String target = commandPart[1].toUpperCase();
 
-                if (verb.equals("SEARCH")&& target.equals("ROOM")) {
-                    presentRoom = building.get(presentRoom.getDirections()[compassPoint]);
-                    System.out.println(presentRoom.getDescription());
-                }
+
                 if (verb.equals("GO") && (target.matches("NORTH|SOUTH|EAST|WEST"))) { //
                     compassPoint = ui.go(target);
 
@@ -99,8 +96,11 @@ public class Main {
                     } else {
                         presentRoom = building.get(presentRoom.getDirections()[compassPoint]);
                         System.out.println(presentRoom.getDescription());
-
                     }
+                } else if (verb.equals("SEARCH")&& target.equals("ROOM")) {
+                        presentRoom = building.get(presentRoom.getDirections()[compassPoint]);
+                        System.out.println(presentRoom.getDescription());
+
                 } else if (verb.equals("TAKE") && Item.löytyyköTargetHuoneesta(target, itemit)){
                    //     if (Item.inventory.contains(target)) {
                     //        System.out.println("You already have this item");
