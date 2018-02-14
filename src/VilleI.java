@@ -83,6 +83,8 @@ public class VilleI {
                         int damageReceived= (playerHealth - zombieDamage);
                     }
 
+                    //hitpontosat
+
 
                     if (zombieHealth > 0 || playerHealth > 0) {
                         System.out.println("It lives so...");
