@@ -36,25 +36,30 @@ public class Main {
 //    String name = Scanner.nextLine ();
 //    player.setPlayerName (name);
         while (true) {
-            System.out.println("What you wish to do");
-            String command = scanner.nextLine();
+            try {
+                System.out.println("What you wish to do");
+                String command = scanner.nextLine();
 
 //        System.out.println(ui.action(command));
-            String[] commandPart = command.split(" ");
-            String verb = commandPart[0].toUpperCase(); //verb part
-            String target = commandPart[1].toUpperCase(); //target part
-            if (verb.equals("GO") &&(target.matches("NORTH|SOUTH|EAST|WEST"))) { //
-                compassPoint = ui.go(target);
+                String[] commandPart = command.split(" ");
+                String verb = commandPart[0].toUpperCase(); //verb part
+                String target = commandPart[1].toUpperCase(); //target part
+                if (verb.equals("GO") && (target.matches("NORTH|SOUTH|EAST|WEST"))) { //
+                    compassPoint = ui.go(target);
 
-                int adjacentRoom = presentRoom.getDirections()[compassPoint];
-                if (adjacentRoom == -1) {
-                    System.out.println("You cannot go to that direction.");
+                    int adjacentRoom = presentRoom.getDirections()[compassPoint];
+                    if (adjacentRoom == -1) {
+                        System.out.println("You cannot go to that direction.");
+                    } else {
+                        presentRoom = building.get(presentRoom.getDirections()[compassPoint]);
+                        System.out.println(presentRoom.getDescription());
+                    }
                 } else {
-                    presentRoom = building.get(presentRoom.getDirections()[compassPoint]);
-                    System.out.println(presentRoom.getDescription());
+                    System.out.println("Your command does not make any sense. Try again.");
                 }
-            } else {
-                System.out.println("Your command does not make any sense. Try again.");
+            } catch (ArrayIndexOutOfBoundsException ex) {
+                System.out.println("invalid command" );
+                continue;
             }
 
 
