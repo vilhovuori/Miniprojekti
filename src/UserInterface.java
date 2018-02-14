@@ -34,25 +34,25 @@ public class UserInterface {
         return "USE";
     }
 
-    public int take(String esine) {
-        int e;
+    public String take(String esine) {
+        String e;
         switch (esine) {
             case "KNIFE":
-                e = 5;
+                e = "knife";
                 break;
             case "DOORKEY":
-                e = 6;
+                e = "doorkey";
                 break;
             case "COFFEE":
-                e = 7;
+                e = "coffee";
                 break;
             case "COFFEEKEY":
-                e = 8;
+                e = "coffeekey";
                 break;
             case "LETTER":
-                e = 9;
+                e = "letter";
             default:
-                e = -1;
+                e = "There is no such item";
         }
         return e;
 

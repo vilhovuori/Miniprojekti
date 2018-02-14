@@ -45,7 +45,7 @@ public class Item {
         this.itemTarget = itemTarget;
     }
 
-    static ArrayList <Item> inventory = new ArrayList<>();
+    static ArrayList <String> inventory = new ArrayList<>();
 
 
     {
