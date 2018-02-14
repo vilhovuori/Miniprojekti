@@ -1,7 +1,13 @@
 public class Player {
-//
-//    private String playername;
-//    public void setPlayerName(String playerNamePar);
+
+    private String playerName;
+
+    public void setPlayerName(String playerNamePar) {
+        playerName = playerNamePar;
+    }
+
+    public String getPlayerName() {
+        return playerName;
+    }
 }
-//    playerName = playerNamePar;
-//}
+
