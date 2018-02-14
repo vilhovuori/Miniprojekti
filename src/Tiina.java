@@ -1,12 +1,10 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class Tiina {
 
     static Room presentRoom;
     static int compassPoint;
-    static String esine;
+    static String otettuEsine;
     static Map<Integer, Room> building = new HashMap<>();
 
     static {
@@ -29,6 +27,24 @@ public class Tiina {
 
     public static void main(String[] args) {
         UserInterface ui = new UserInterface();
+
+        Item knife = new Item("veitsi", Tiina.building.get(0) , "Zombie");
+        Item doorKey = new Item ("Avain oveen", Tiina.building.get(2), "lukko");
+        Item coffee = new Item("kahvi", Tiina.building.get(0), "kahvinkeitin");
+        Item coffeeKey = new Item("Avain keittimeen", Tiina.building.get(3), "kahvinkeitin");
+        Item letter = new Item ("kirje", Tiina.building.get(1), null );
+
+        /*List<Item> esineLista = new ArrayList<>();
+        esineLista.add(knife);
+        esineLista.add(doorKey);*/
+        Item.inventory.add("FISTS");
+
+        HashMap<String, Item> itemit = new HashMap<>();
+        itemit.put("KNIFE", knife);
+        itemit.put("DOORKEY", doorKey);
+        itemit.put("COFFEE", coffee);
+        itemit.put("COFFEEKEY", coffeeKey);
+        itemit.put("LETTER", letter);
 
         Scanner scanner = new Scanner(System.in);
         Player player = new Player();
@@ -54,11 +70,14 @@ public class Tiina {
                     presentRoom = building.get(presentRoom.getDirections()[compassPoint]);
                     System.out.println(presentRoom.getDescription());
                 }
-               } else if (verb.equals("TAKE") && (target.matches("KNIFE|DOORKEY|COFFEE|COFFEEKEY|LETTER"))){
+            } else if (verb.equals("TAKE") && Item.löytyyköTargetHuoneesta(target, itemit)){
                 System.out.println("You picked up the " + target);
+                otettuEsine = ui.take(target);
 
-               // Item.inventory.add(new Item(target));
-           }
+                Item.inventory.add(otettuEsine);
+                System.out.println(Item.inventory);
+
+            }
 
             else {
                 System.out.println("Your command does not make any sense. Try again.");

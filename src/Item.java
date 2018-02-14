@@ -1,6 +1,7 @@
 import java.lang.annotation.Target;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class Item {
@@ -48,12 +49,18 @@ public class Item {
     static ArrayList <String> inventory = new ArrayList<>();
 
 
-    {
-        Item knife = new Item("veitsi", Tiina.building.get(0) , "Zombie");
-        Item doorKey = new Item ("Avain oveen", Tiina.building.get(2), "lukko");
-        Item coffee = new Item("kahvi", Tiina.building.get(0), "kahvinkeitin");
-        Item coffeeKey = new Item("Avain keittimeen", Tiina.building.get(3), "kahvinkeitin");
-        Item letter = new Item ("kirje", Tiina.building.get(1), null );
+    static public boolean löytyyköTargetHuoneesta (String target, HashMap<String, Item> itemit) {
+        String[] taulukko = {"KNIFE", "DOORKEY","COFFEE", "COFFEEKEY", "LETTER"};
+        for (String s : taulukko) {
+            if (itemit.containsKey(s) && itemit.get(target).itemLocation == Tiina.presentRoom) {
+                return true;
+            } else {
+                continue;
+            }
+        }
+        return false;
     }
+
+
 
 }
