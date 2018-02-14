@@ -38,6 +38,7 @@ public class Main {
 
     public static void main(String[] args) {
         UserInterface ui = new UserInterface();
+        boolean gameStatus = true;
 
         Item knife = new Item("veitsi", building.get(0) , "Zombie");
         Item doorKey = new Item ("Avain oveen", building.get(2), "lukko");
@@ -76,7 +77,7 @@ public class Main {
     String name = scanner.nextLine ();
     player.setPlayerName (name);
         System.out.println(presentRoom.getDescription());
-        while (true) {
+        while (gameStatus==true) {
             try {
                 System.out.println("What do you wish to do, " + name + "?");
                 String command = scanner.nextLine();
@@ -153,6 +154,22 @@ public class Main {
 
                         else if (zombieHealth > 0 && playerHealth <= 0) {
                             System.out.println("Coffee zombie lives, you do not");
+                            gameStatus=false;
+                            try (FileReader fr = new FileReader("gameover.txt");
+                                 BufferedReader in = new BufferedReader(fr)){
+                                StringBuilder teksti = new StringBuilder();
+                                String rivi;
+                                while ((rivi = in.readLine()) != null) {
+                                    teksti.append(rivi).append("\n");
+                                }
+                                tulos = teksti.toString();
+                                System.out.println(tulos);
+                            } catch (FileNotFoundException ex) {
+                                System.out.println("Virhe: tiedostoa ei löytynyt");
+                            } catch (IOException ex) {
+                                System.out.println("Virhe: muu virhe lukiessa");
+                            }
+
                             break;
 
                         } else {
