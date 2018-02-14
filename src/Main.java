@@ -137,6 +137,9 @@ public class Main {
                     System.out.println("Fight, what do you want to use?");
                     System.out.println("Your HP:" + playerHealth + " " + "Coffee zombie's HP:" +zombieHealth);
                     String taisteluToiminto = scanner.nextLine().toUpperCase();
+                    if (Item.inventory.contains(knife)) {
+                        playerDamage += 5;
+                    }
                     if (taisteluToiminto.equals("USE KNIFE")){
                         zombieHealth -= playerDamage;
                         playerHealth -= zombieDamage;
