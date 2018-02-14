@@ -39,11 +39,10 @@ public class Juuso {
             System.out.println("What you wish to do");
             String command = scanner.nextLine();
 
-//        System.out.println(ui.action(command));
             String[] commandPart = command.split(" ");
             String verb = commandPart[0].toUpperCase(); //verb part
             String target = commandPart[1].toUpperCase(); //target part
-            if (verb.equals("GO") &&(target.matches("NORTH|SOUTH|EAST|WEST"))) { //
+            if (verb.equals("GO") &&(target.matches("NORTH|SOUTH|EAST|WEST"))) { //checks if the command is valid.
                 compassPoint = ui.go(target);
 
                 int adjacentRoom = presentRoom.getDirections()[compassPoint];
