@@ -16,17 +16,21 @@ public class Main {
 
     static {
 
-        Room huone = new Room("Cafeteria", 0, "The cafeteria, or so you at least think", new int[]{-1, 1, 5, -1});
+        Room huone = new Room("Cafeteria", 0, "You are in the Cafeteria. There are doors to the south and east.", new int[]{-1, 1, 5, -1});
         building.put(huone.getRoomNumber(), huone);
-        huone = new Room("Lobby", 1, "The lobby, or so you at least think", new int[]{-1, 2, 4, 0});
+        huone = new Room("Lobby", 1, "You are in the Lobby. There are doors to the east, south and west. " +
+                "A reception desk stands in the middle of the room, but there's no one there. A letter is placed on the reception desk.", new int[]{-1, 2, 4, 0});
         building.put(huone.getRoomNumber(), huone);
-        huone = new Room("Office", 2, "The office, or so you at least think", new int[]{-1, -1, 3, 1});
+        huone = new Room("Office", 2, "You are in Office. There are doors to the south and west. A sad, broken coffee machine stands in the corner. " +
+                "But wait, something seems to be lurking behind the machine...", new int[]{-1, -1, 3, 1});
         building.put(huone.getRoomNumber(), huone);
-        huone = new Room("Meeting room", 3, "The meeting, or so you at least think", new int[]{2, -1, -1, -1});
+        huone = new Room("Meeting room", 3, "You are in the Meeting Room. There are doors to the north and west. The western door is locked. " +
+                "A key to the coffee maker lies on the table the middle of the room.", new int[]{2, -1, -1, -1});
         building.put(huone.getRoomNumber(), huone);
-        huone = new Room("Classroom", 4, "The classroom, or so you at least think", new int[]{1, -1, -1, -1});
+        huone = new Room("Classroom", 4, "You are in the Classroom. There's a door to the north and a locked door to the east. A coffee maker stands in the corner, but it's locked. " +
+                "In the other corner there's a thing that resembles a coffee bag with the label: \"KORVIKE-COFFEE\".", new int[]{1, -1, -1, -1});
         building.put(huone.getRoomNumber(), huone);
-        huone = new Room("Toilet", 5, "The toilet, or so you at least think", new int[]{0, -1, -1, -1});
+        huone = new Room("Toilet", 5, "You are in the Toilet. There's a to the north. There's a sink by the east wall and water is running from the faucet.", new int[]{0, -1, -1, -1});
         building.put(huone.getRoomNumber(), huone);
         presentRoom = building.get(4);
         System.out.println(presentRoom.getDescription());
