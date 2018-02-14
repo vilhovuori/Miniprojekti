@@ -6,9 +6,9 @@ public class Item {
 
     private String itemName;
     private int itemLocation;
-    private String[] itemTarget;
+    private String itemTarget;
 
-    public Item (String itemName, int itemLocation, String[] itemTarget){
+    public Item (String itemName, int itemLocation, String itemTarget){
         this.itemName = itemName;
         this.itemLocation = itemLocation;
         this.itemTarget = itemTarget;
@@ -45,5 +45,7 @@ public class Item {
     }
 
 
-
+    static {
+        Item veitsi = new Item("veitsi", Main.map. , "Zombie");
+    }
 }
