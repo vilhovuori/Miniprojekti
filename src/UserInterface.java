@@ -25,7 +25,7 @@ public class UserInterface {
                 d = 3;
                 break;
             default:
-                d = -1;
+                d = 4;
         }
         return d;
     }
