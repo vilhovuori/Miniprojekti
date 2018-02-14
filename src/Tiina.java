@@ -54,7 +54,10 @@ public class Tiina {
                     presentRoom = building.get(presentRoom.getDirections()[compassPoint]);
                     System.out.println(presentRoom.getDescription());
                 }
-     //       } else if (verb.equals("TAKE") && (target.matches("VEITSI"))){
+               } else if (verb.equals("TAKE") && (target.matches("KNIFE|DOORKEY|COFFEE|COFFEEKEY|LETTER"))){
+                System.out.println("You picked up the " + target);
+
+               // Item.inventory.add(new Item(target));
            }
 
             else {
