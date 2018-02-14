@@ -38,10 +38,6 @@ public class UserInterface {
         return "TAKE";
     }
 
-    public String search(Room presentRoom) {
-        return presentRoom.getDescription();
-    }
-
     public String open() {
         return "OPEN";
     }
