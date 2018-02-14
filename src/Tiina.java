@@ -84,7 +84,14 @@ public class Tiina {
             }
 
 
-
+   /*     } else {
+            System.out.println("You picked up the " + otettuEsine);
+            Item.inventory.add(otettuEsine);
+            System.out.println(Item.inventory);
+            if (otettuEsine.equals("letter")) {
+                System.out.println("Instructions for good coffee: take some fresh water and aromatic coffee beans.");
+            }
+        }*/
 
 
 

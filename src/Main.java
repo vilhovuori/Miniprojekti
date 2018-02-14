@@ -110,7 +110,7 @@ public class Main {
                             Item.inventory.add(otettuEsine);
                             System.out.println(Item.inventory);
                                 if (otettuEsine.equals("letter")) {
-                                    System.out.println("Instructions for good coffee: take some fresh water and aromatic coffee beans..");
+                                    System.out.println("Instructions for good coffee: take some fresh water and aromatic coffee beans.");
                                 }
                         }
                 } else {
