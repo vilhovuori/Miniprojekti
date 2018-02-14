@@ -16,7 +16,8 @@ public class Main {
 
     static {
 
-        Room huone = new Room("Cafeteria", 0, "You are in the Cafeteria. There are doors to the south and east.", new int[]{-1, 1, 5, -1});
+        Room huone = new Room("Cafeteria", 0, "You are in the Cafeteria. There are doors to the south and east. A knife is lying on the floor. " +
+                "A bag of freshly ground coffee is placed on one of the dining tables.", new int[]{-1, 1, 5, -1});
         building.put(huone.getRoomNumber(), huone);
         huone = new Room("Lobby", 1, "You are in the Lobby. There are doors to the east, south and west. " +
                 "A reception desk stands in the middle of the room, but there's no one there. A letter is placed on the reception desk.", new int[]{-1, 2, 4, 0});
@@ -33,7 +34,6 @@ public class Main {
         huone = new Room("Toilet", 5, "You are in the Toilet. There's a to the north. There's a sink by the east wall and water is running from the faucet.", new int[]{0, -1, -1, -1});
         building.put(huone.getRoomNumber(), huone);
         presentRoom = building.get(4);
-        System.out.println(presentRoom.getDescription());
     }
 
     public static void main(String[] args) {
@@ -57,7 +57,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Player player = new Player();
         String tulos = null;
-        try (FileReader fr = new FileReader("Miniprojekti/title.txt");
+        try (FileReader fr = new FileReader("title.txt");
              BufferedReader in = new BufferedReader(fr)){
             StringBuilder teksti = new StringBuilder();
             String rivi;
@@ -78,7 +78,7 @@ public class Main {
         System.out.println(presentRoom.getDescription());
         while (true) {
             try {
-                System.out.println("What you wish to do, " + name + "?");
+                System.out.println("What do you wish to do, " + name + "?");
                 String command = scanner.nextLine();
 
 //        System.out.println(ui.action(command));
@@ -88,7 +88,7 @@ public class Main {
                 if (commandPart.length > 1) {
                     target = commandPart[1].toUpperCase(); //target part
                 }
-                if (commandPart[0].equals("SEARCH")) {
+                if (verb.equals("SEARCH")&& target.equals("ROOM")) {
                     presentRoom = building.get(presentRoom.getDirections()[compassPoint]);
                     System.out.println(presentRoom.getDescription());
                 }
@@ -151,7 +151,7 @@ public class Main {
                             break;
 
                         } else {
-                            System.out.println("You are victorious");
+                            System.out.println("You are victorious! YOU KILLED THE ZOMBIE!");
                             break;
                         }} else {
                         System.out.println("You don't need to use your head literally, but it is indeed needed to type something that is asked of you!");
