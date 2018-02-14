@@ -2,10 +2,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Main {
+public class Juuso {
 
     static Room presentRoom;
-    static int ilmansuunta;
+    static int compassPoint;
     static Map<Integer, Room> map = new HashMap<>();
 
     static {
@@ -37,25 +37,32 @@ public class Main {
 //    player.setPlayerName (name);
         while (true) {
             System.out.println("What you wish to do");
-            String komento = scanner.nextLine();
+            String command = scanner.nextLine();
 
-//        System.out.println(ui.action(komento));
-            String[] komentoOsa = komento.split(" ");
-            String kasky1 = komentoOsa[0].toUpperCase();
-            String kasky2 = komentoOsa[1].toUpperCase();
-            if (kasky1.equals("GO")) {
-                ilmansuunta = ui.go(kasky2);
-                System.out.println(ui.go(kasky2) + " Ilmansuunta");
-            }
+//        System.out.println(ui.action(command));
+            String[] commandPart = command.split(" ");
+            String verb = commandPart[0].toUpperCase(); //verb part
+            String target = commandPart[1].toUpperCase(); //target part
+            if (verb.equals("GO") &&(target.matches("NORTH|SOUTH|EAST|WEST"))) { //
+                compassPoint = ui.go(target);
 
-                int adjacentRoom = presentRoom.getDirections()[ilmansuunta];
-
-            if (adjacentRoom == -1 ) {
-                System.out.println("You cannot go to that direction.");
+                int adjacentRoom = presentRoom.getDirections()[compassPoint];
+                if (adjacentRoom == -1) {
+                    System.out.println("You cannot go to that direction.");
+                } else {
+                    presentRoom = map.get(presentRoom.getDirections()[compassPoint]);
+                    System.out.println(presentRoom.getDescription());
+                }
             } else {
-                presentRoom = map.get(presentRoom.getDirections()[ilmansuunta]);
-                System.out.println(presentRoom.getDescription());
+                System.out.println("Your command does not make any sense. Try again.");
             }
+
+
+
+
+
+
+
         }
 
     }
