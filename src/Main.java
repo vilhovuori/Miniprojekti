@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
 
     static Room presentRoom;
-    static int compassPoint;    
+    static int compassPoint;
     static Map<Integer, Room> building = new HashMap<>();
 
     static {

@@ -46,6 +46,6 @@ public class Item {
 
 
     static {
-        Item veitsi = new Item("veitsi", Main.map. , "Zombie");
+        Item veitsi = new Item("veitsi", Main.building.get() , "Zombie");
     }
 }
