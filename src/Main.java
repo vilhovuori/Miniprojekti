@@ -99,7 +99,6 @@ public class Main {
                         System.out.println(presentRoom.getDescription());
                     }
                 } else if (verb.equals("SEARCH")&& target.equals("ROOM")) {
-                        presentRoom = building.get(presentRoom.getDirections()[compassPoint]);
                         System.out.println(presentRoom.getDescription());
 
                 } else if (verb.equals("TAKE") && Item.löytyyköTargetHuoneesta(target, itemit)){
@@ -141,12 +140,12 @@ public class Main {
 
                 while (true) {
 
-                    System.out.println("Fight, what do you want to use?");
+                    System.out.println("Fight, what do you want to use, knife or fist to take up this channel?");
                     System.out.println("Your HP:" + playerHealth + " " + "Coffee zombie's HP:" +zombieHealth);
                     String taisteluToiminto = scanner.nextLine().toUpperCase();
                     if (Item.inventory.contains(knife)) {
                         playerDamage += 5;}
-                    if (taisteluToiminto.matches("KNIFE|FISTS")){
+                    if (taisteluToiminto.matches("KNIFE|FIST")){
                         zombieHealth -= playerDamage;
                         playerHealth -= zombieDamage;
 
@@ -175,7 +174,7 @@ public class Main {
                             break;
 
                         } else {
-                            System.out.println("You are victorious! YOU KILLED THE ZOMBIE!");
+                            System.out.println("You are victorious! YOU KILLED THE ZOMBIE, but for how long does it stay dead!");
                             break;
                         }} else {
                         System.out.println("You don't need to use your head literally, but it is indeed needed to type something that is asked of you!");
