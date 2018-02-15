@@ -49,13 +49,13 @@ public class UserInterface {
                 break;
             case "COFFEE":
                 u = "You put the coffee in the coffee machine.";
-                Juuso.coffeeMachineStatus = Juuso.coffeeMachineStatus + 1;
+                Main.coffeeMachineStatus = Main.coffeeMachineStatus + 1;
                 Item.inventory.remove("COFFEE");
 
                 break;
             case "WIRE":
                 u = "The coffee machine is turned on.";
-                Juuso.coffeeMachineStatus = Juuso.coffeeMachineStatus + 1;
+                Main.coffeeMachineStatus = Main.coffeeMachineStatus + 1;
                 String s3 = Main.building.get(4).getDescription();
                 String replaceString3 = s3.replace("A coffee maker stands in the corner, but there's no electric wire.", "A powered coffee maker stands in the corner.");
                 Main.building.get(4).setDescription(replaceString3);
@@ -66,7 +66,7 @@ public class UserInterface {
                 break;
             case "WATER":
                 u = "You put water in the coffee machine";
-                Juuso.coffeeMachineStatus = Juuso.coffeeMachineStatus + 1;
+                Main.coffeeMachineStatus = Main.coffeeMachineStatus + 1;
                 Item.inventory.remove("WATER");
                 break;
             default:
