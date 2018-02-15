@@ -36,7 +36,7 @@ public class Item {
 
 
     static public boolean löytyyköTargetHuoneesta (String target, HashMap<String, Item> itemit) {       //metodi käy läpi taulukon itemit. Jos item löytyy listalta sekä
-        String[] taulukko = {"KNIFE", "DOORKEY","COFFEE", "COFFEEKEY", "LETTER"};                       //item on samassa paikassa kun pelaaja, palautuu true. Jos ei ole, peli jatkuu
+        String[] taulukko = {"KNIFE", "KEY","COFFEE", "WIRE", "LETTER", "WATER"};                       //item on samassa paikassa kun pelaaja, palautuu true. Jos ei ole, peli jatkuu
         for (String s : taulukko) {
             if (itemit.containsKey(s) && itemit.get(target).itemLocation == Main.presentRoom) {
                 return true;
