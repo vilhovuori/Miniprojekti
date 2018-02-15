@@ -109,7 +109,7 @@ public class Tiina {
                     kayttoEsine = ui.take(target);
                     System.out.println(ui.use(target));
 
-                } else if (verb.equals("TAKE") && Item.löytyyköTargetHuoneesta(target, itemit)) {
+                } else if (verb.equals("TAKE") && Item.itemInRoom(target, itemit)) {
                     otettuEsine = ui.take(target);
                     if (Item.inventory.contains(otettuEsine)) {
                         System.out.println("You already have this item");
