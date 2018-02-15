@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -10,6 +11,7 @@ public class Leena extends JFrame {
     JFrame window;
     Container con;
     JTextField input;
+    ActionListener listener;
 
     public Leena() {
 
@@ -21,7 +23,7 @@ public class Leena extends JFrame {
         window.setVisible(true);
         con = window.getContentPane();
         input = new JTextField(25);
-        //input.addActionListener(this);
+        input.addActionListener(listener);
 
 //        public void actionPerformed(ActionEvent event) {
 //            String text = input.getText();

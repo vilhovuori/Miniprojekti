@@ -84,7 +84,7 @@ public class Main {
                 "You notice the coffee maker in the corner, but some scoundrel has stolen the electric wire.\n" +
                 "You need coffee to survive. Go explore your surroundings... ");
 
-        while (coffeeMachineStatus < 3) {
+        while (coffeeMachineStatus < 3 && gameStatus == true ) {
             try {
                 System.out.println("What do you wish to do, " + name + "?");
                 String command = scanner.nextLine();
@@ -189,6 +189,7 @@ public class Main {
                         } else if (zombieHealth > 0 && playerHealth <= 0) {
                             System.out.println("Coffee zombie lives, you do not");
                             gameStatus = false;
+                            scanner.close();
                             try (FileReader fr = new FileReader("gameover.txt");
                                  BufferedReader in = new BufferedReader(fr)) {
                                 StringBuilder teksti = new StringBuilder();
@@ -234,6 +235,7 @@ public class Main {
             }
 
         }
+        if (gameStatus==true) {
         System.out.println("You were able to make fresh coffee and continue your Java project. Hopefully you will remember that today your bodycount on this road has risen by " +zombiecounter+ ", Congratulations!");
         try (FileReader fr = new FileReader("end.txt");
              BufferedReader in = new BufferedReader(fr)) {
@@ -247,7 +249,7 @@ public class Main {
         } catch (FileNotFoundException ex) {
             System.out.println("Virhe: tiedostoa ei löytynyt");
         } catch (IOException ex) {
-            System.out.println("Virhe: muu virhe lukiessa");
+            System.out.println("Virhe: muu virhe lukiessa");}
         }
     }
 }
