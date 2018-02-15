@@ -4,39 +4,23 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+/* Tässä luokassa luodaan Item-olioiden konstruktori sekä Arraylistit. Inventory-listaan kerätään pelaajan keräämät itemit ja usedItems-listaan
+  * kerätään itemit, jotka on käytetty.
+   * IteminRoom-metodi käy läpi taulukon.*/
+
 public class Item {
 
-    private String itemName;
+
     private Room itemLocation;
     private Room targetRoom;
     static ArrayList <String> inventory = new ArrayList<>();
     static ArrayList <String> usedItems = new ArrayList<>();
 
 
-    public Item (String itemName, Room itemLocation, Room targetRoom){
-        this.itemName = itemName;
+    public Item (Room itemLocation, Room targetRoom){
         this.itemLocation = itemLocation;
         this.targetRoom = targetRoom;
     }
-
-    public String getItemName() {
-        return itemName;
-    }
-
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
-    }
-
-    public Room getItemLocation() {
-        return itemLocation;
-    }
-
-    public void setItemLocation(Room itemLocation) {
-        this.itemLocation = itemLocation;
-    }
-
-
-
 
     static public boolean itemInRoom (String target, HashMap<String, Item> itemit) {       //metodi käy läpi taulukon itemit. Jos item löytyy listalta sekä
         String[] taulukko = {"KNIFE", "KEY","COFFEE", "WIRE", "LETTER", "WATER"};                       //item on samassa paikassa kun pelaaja, palautuu true. Jos ei ole, peli jatkuu
