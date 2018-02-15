@@ -81,34 +81,34 @@ public class UserInterface {
         String e;
         switch (esine) {
             case "KNIFE":
-                e = "knife";
+                e = "KNIFE";
                 String s1 = Main.building.get(0).getDescription();
                 String replaceString1 = s1.replace(" A knife is lying on the floor.", "");
                 Main.building.get(0).setDescription(replaceString1);
                 break;
             case "KEY":
-                e = "key";
+                e = "KEY";
                 break;
             case "COFFEE":
-                e = "coffee";
+                e = "COFFEE";
                 String s2 = Main.building.get(0).getDescription();
                 String replaceString2 = s2.replace("A bag of freshly ground coffee is placed on one of the dining tables.", "");
                 Main.building.get(0).setDescription(replaceString2);
                 break;
             case "WIRE":
-                e = "wire";
+                e = "WIRE";
                 String s4 = Main.building.get(3).getDescription();
                 String replaceString4 = s4.replace("The wire to the coffee maker lies on the table the middle of the room.", "");
                 Main.building.get(3).setDescription(replaceString4);
                 break;
             case "LETTER":
-                e = "letter";
+                e = "LETTER";
                 String s3 = Main.building.get(1).getDescription();
                 String replaceString3 = s3.replace("A letter is placed on the reception desk.", "");
                 Main.building.get(1).setDescription(replaceString3);
                 break;
             case "WATER":
-                e = "water";
+                e = "WATER";
                 break;
             default:
                 e = "there is no such item";
