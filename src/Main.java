@@ -9,7 +9,6 @@ public class Main {
     static Room presentRoom;
     static int compassPoint;
     static String otettuEsine;
-    static String kayttoEsine;
     static int coffeeMachineStatus = 0;
     static Map<Integer, Room> building = new HashMap<>();
 
@@ -45,7 +44,7 @@ public class Main {
         Item key = new Item("Key to the lock on the door", building.get(2), building.get(3));
         Item coffee = new Item("coffeebeans", building.get(0), building.get(4));
         Item wire = new Item("Electric wire for the coffee machine", building.get(3), building.get(4));
-        Item letter = new Item("letter", building.get(1), null);
+        Item letter = new Item("letter", building.get(1), building.get(1));
         Item water = new Item("water", building.get(5), building.get(4));
 
         Item.inventory.add("FIST");
@@ -124,9 +123,6 @@ public class Main {
                         System.out.println("You picked up the " + otettuEsine);
                         Item.inventory.add(otettuEsine.toUpperCase());
                         System.out.println(Item.inventory);
-                    }
-                    if (otettuEsine.equals("letter")) {
-                        System.out.println("There is a note in the letter which says: 'Instructions for good coffee: take some fresh water and aromatic coffee beans.'");
                     }
 
                 } else if (verb.equals("CHECK") && target.equals("ITEMS")) {
@@ -208,7 +204,7 @@ public class Main {
                         } else {
                                 System.out.println("You are victorious!! YOU KILLED THE ZOMBIE, but for how long does it stay dead!");
                                 if (zombieKilledStatus == 0) {
-                                    System.out.println("You found a key.");
+                                    System.out.println("You found a KEY. It has been added to your items.");
 //                                ui.take("KEY");
 //                                Item.inventory.contains("KEY");
                                     Item.inventory.add("KEY");
