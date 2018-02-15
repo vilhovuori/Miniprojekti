@@ -107,13 +107,8 @@ public class Main {
 
                 } else if (verb.equals("USE") && Item.inventory.contains(target.toUpperCase())) {
                     kayttoEsine = ui.take(target);
+                    System.out.println(ui.use(target));
 
-                        if (!Item.inventory.contains(kayttoEsine)) {
-                            System.out.println("You do not have this item");
-                        } else {
-                            System.out.println(ui.use(target));;
-
-                    }
                 } else if (verb.equals("TAKE") && Item.löytyyköTargetHuoneesta(target, itemit)) {
                     otettuEsine = ui.take(target);
                     if (Item.inventory.contains(otettuEsine)) {
@@ -218,9 +213,6 @@ public class Main {
         }
     }
 }
-
-
-
 
 
 //    class action{}
