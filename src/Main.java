@@ -175,7 +175,7 @@ public class Main {
             String randomnimi = nimilista.get(0);
 
             Random randomGenerator = new Random();
-            int playerRandomDamage = randomGenerator.nextInt(15);
+            int playerRandomDamage = randomGenerator.nextInt(15)+1;
             int zombieRandomDamage = randomGenerator.nextInt(20);
             int playerHealth = 20;
             int playerDamage = playerRandomDamage;
