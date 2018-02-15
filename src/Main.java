@@ -24,7 +24,7 @@ public class Main {
                 "\nBut wait, something seems to be lurking behind the machine...", new int[]{-1, -1, 3, 1});
         building.put(huone.getRoomNumber(), huone);
         huone = new Room("Meeting room", 3, "You are in the Meeting Room. There are doors to the north and west. The western door is locked. " +
-                "\nThe electric wire to the coffee maker lies on the table the middle of the room.", new int[]{2, -1, -1, -1});
+                "\nThe wire to the coffee maker lies on the table the middle of the room.", new int[]{2, -1, -1, -1});
         building.put(huone.getRoomNumber(), huone);
         huone = new Room("Classroom", 4, "You are in the Classroom.\nThere's a door to the north and a locked door to the east. A coffee maker stands in the corner, but there's no electric wire. "
                 , new int[]{1, -1, -1, -1});
@@ -41,7 +41,7 @@ public class Main {
         Item knife = new Item("knife", building.get(0), "Zombie");
         Item key = new Item("Key to the lock on the door", building.get(2), "lukko");
         Item coffee = new Item("coffeebeans", building.get(0), "kahvinkeitin");
-        Item electricwire = new Item("Electric wire for the coffee machine", building.get(3), "kahvinkeitin");
+        Item wire = new Item("Electric wire for the coffee machine", building.get(3), "kahvinkeitin");
         Item letter = new Item("letter", building.get(1), null);
         Item water = new Item("water", building.get(5), "kahvinkeitin");
 
@@ -51,7 +51,7 @@ public class Main {
         itemit.put("KNIFE", knife);
         itemit.put("KEY", key);
         itemit.put("COFFEE", coffee);
-        itemit.put("ELECTRICWIRE", electricwire);
+        itemit.put("WIRE", wire);
         itemit.put("LETTER", letter);
         itemit.put("WATER", water);
 
