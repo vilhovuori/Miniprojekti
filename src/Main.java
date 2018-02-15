@@ -38,6 +38,7 @@ public class Main {
         UserInterface ui = new UserInterface();
         boolean gameStatus = true;
         int zombieKilledStatus = 0;
+        int zombiecounter = 0;
 
 
         Item knife = new Item("knife", building.get(0), building.get(2));
@@ -162,6 +163,7 @@ public class Main {
 
 
             while (presentRoom == building.get(2) && zombieHealth == 15) {
+                zombiecounter ++;
                 System.out.println("By the holy coffee beans, you have encountered a zombie, Coffee Zombie that creeps by the name of" + " " + randomnimi + "!" + " " +
                         "Time to take out your weapons, hopefully you brought more then your lefty and right.");
 
