@@ -14,22 +14,22 @@ public class Main {
 
     static {
 
-        Room huone = new Room("Cafeteria", 0, "You are in the Cafeteria.\nThere are doors to the south and east. A knife is lying on the floor.\n" +
+        Room huone = new Room("Cafeteria", 0, "\nYou are in the Cafeteria.\nThere are doors to the south and east. A knife is lying on the floor.\n" +
                 "A bag of freshly ground coffee is placed on one of the dining tables.", new int[]{-1, 1, 5, -1});
         building.put(huone.getRoomNumber(), huone);
-        huone = new Room("Lobby", 1, "You are in the Lobby.\nThere are doors to the east, south and west." +
+        huone = new Room("Lobby", 1, "\nYou are in the Lobby.\nThere are doors to the east, south and west." +
                 "\nA reception desk stands in the middle of the room, but there's no one there. A letter is placed on the reception desk.", new int[]{-1, 2, 4, 0});
         building.put(huone.getRoomNumber(), huone);
-        huone = new Room("Office", 2, "You are in Office.\nThere are doors to the south and west.\nA sad, broken coffee machine stands in the corner. " +
+        huone = new Room("Office", 2, "\nYou are in Office.\nThere are doors to the south and west.\nA sad, broken coffee machine stands in the corner. " + "\n*****" +
                 "\nBut wait, something seems to be lurking behind the machine...", new int[]{-1, -1, 3, 1});
         building.put(huone.getRoomNumber(), huone);
-        huone = new Room("Meeting room", 3, "You are in the Meeting Room. There are doors to the north and west. The western door is locked. " +
+        huone = new Room("Meeting room", 3, "\nYou are in the Meeting Room. There are doors to the north and west. The western door is locked. " +
                 "\nThe wire to the coffee maker lies on the table the middle of the room.", new int[]{2, -1, -1, -1});
         building.put(huone.getRoomNumber(), huone);
-        huone = new Room("Classroom", 4, "You are in the Classroom.\nThere's a door to the north and a locked door to the east. A coffee maker stands in the corner, but there's no electric wire. "
+        huone = new Room("Classroom", 4, "\nYou are in the Classroom.\nThere's a door to the north and a locked door to the east. A coffee maker stands in the corner, but there's no electric wire. "
                 , new int[]{1, -1, -1, -1});
         building.put(huone.getRoomNumber(), huone);
-        huone = new Room("Toilet", 5, "You are in the Toilet. \nThere's a door to the north. There's a sink by the east wall and water is running from the faucet.", new int[]{0, -1, -1, -1});
+        huone = new Room("Toilet", 5, "\nYou are in the Toilet. \nThere's a door to the north. There's a sink by the east wall and water is running from the faucet.", new int[]{0, -1, -1, -1});
         building.put(huone.getRoomNumber(), huone);
         presentRoom = building.get(4);
     }
@@ -79,10 +79,10 @@ public class Main {
 
         String name = scanner.nextLine();
         player.setPlayerName(name);
-        System.out.println("It's 5.30 pm. You are all alone in the Academy classroom, working hard on your programming project." +
+        System.out.println("\nIt's 5.30 pm. You are all alone in the Academy classroom, working hard on your programming project." +
                 "\nYour brain is starting to overload from all the fore-loops, so you feel the urge to sip a cup of steaming hot coffee.\n" +
                 "You notice the coffee maker in the corner, but some scoundrel has stolen the electric wire.\n" +
-                "You need coffee to survive. Go explore your surroundings... ");
+                "You need coffee to survive. Go explore your surroundings... (If you need help to get started, type command 'help me') ");
 
         while (coffeeMachineStatus < 3 && gameStatus == true ) {
             try {
@@ -126,7 +126,7 @@ public class Main {
                     } else {
                         System.out.println("You picked up the " + otettuEsine);
                         Item.inventory.add(otettuEsine.toUpperCase());
-                        System.out.println(Item.inventory);
+                        System.out.println("Your items: " + Item.inventory);
                     }
 
                 } else if (verb.equals("CHECK") && target.equals("ITEMS")) {
@@ -165,7 +165,7 @@ public class Main {
             while (presentRoom == building.get(2) && zombieHealth == 15) {
                 zombiecounter ++;
                 System.out.println("By the holy coffee beans, you have encountered a zombie, Coffee Zombie that creeps by the name of" + " " + randomnimi + "!" + " " +
-                        "Time to take out your weapons, hopefully you brought more then your lefty and right. ");
+                        "\nTime to take out your weapons, hopefully you brought more then your lefty and right. ");
 
                 while (gameStatus==true) {
 
@@ -178,7 +178,7 @@ public class Main {
                             playerDamage += 5;
                         } else if (taisteluToiminto.matches("KNIFE") && (!Item.inventory.contains("KNIFE"))) {
                             System.out.println("You do not have knife, " +
-                                    "but ended up looking for an imaginary one while" + " " + zombieName + " " + "almost dies in laughter, hahaa, he did already!");
+                                    "but ended up looking for an imaginary one while" + " " + zombieName + " " + "almost dies in laughter. \nHahaa, it did already! (Die I mean... It is a zombie after all..)");
                             continue;
                         }
                         zombieHealth -= playerDamage;
@@ -210,7 +210,7 @@ public class Main {
                         } else {
                             System.out.println("You are victorious!! YOU KILLED THE ZOMBIE, but for how long does it stay dead!");
                             if (zombieKilledStatus == 0) {
-                                System.out.println("You found a KEY. It has been added to your items.");
+                                System.out.println("Hey! Look what appeared from the zombies broken coffee cup! A KEY!!! It has been added to your items.");
 //                                ui.take("KEY");
 //                                Item.inventory.contains("KEY");
                                 Item.inventory.add("KEY");
