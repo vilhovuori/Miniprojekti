@@ -5,10 +5,7 @@ public class Player {
 
     public void setPlayerName(String playerNamePar) {
         playerName = playerNamePar;
-    }
 
-    public String getPlayerName() {
-        return playerName;
     }
 }
 
