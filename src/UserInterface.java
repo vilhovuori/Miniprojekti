@@ -8,7 +8,7 @@ public class UserInterface {
 //        }               return 0;
 //
 
-
+/* metodi public int go muuttaa String-tyyppiset directionit inteiksi*/
     public int go(String direction) {
         int d;
         switch (direction) {
@@ -73,6 +73,8 @@ public class UserInterface {
         return u;
 
     }
+/* metodi public String take muuttaa huoneen kuvauksen, kun huoneesta on otettu esine.*/
+
 
     public String take(String esine) {
         String e;
@@ -115,16 +117,12 @@ public class UserInterface {
         return e;
     }
 
-    public String open() {
-        return "OPEN";
-    }
 
+/*metodi public String help	palauttaa komennot, joita pelissä voi käyttää*/
     public String help() {
         return "Usable commands:\nGO + DIRECTION (north, east, south, west)\nUSE + ITEMNAME\nTAKE + ITEMNAME\nSEARCH ROOM\nCHECK ITEMS\nHELP ME\nDuring fight:\nFIST\nKNIFE (if you have one)";
     }
 
-    public String actionTarget() {
-        return null;
-    }
+
 
 }
