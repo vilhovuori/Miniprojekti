@@ -105,12 +105,14 @@ public class Main {
                 } else if (verb.equals("SEARCH") && target.equals("ROOM")) {
                     System.out.println(presentRoom.getDescription());
 
-                } else if (verb.equals("USE") && Item.inventory.contains(target)) {
+                } else if (verb.equals("USE") && Item.inventory.contains(target.toUpperCase())) {
                     kayttoEsine = ui.take(target);
-                    if (!Item.inventory.contains(kayttoEsine)) {
-                        System.out.println("You do not have this item");
-                    } else {
-                        ui.use(target);
+
+                        if (!Item.inventory.contains(kayttoEsine)) {
+                            System.out.println("You do not have this item");
+                        } else {
+                            System.out.println(ui.use(target));;
+
                     }
                 } else if (verb.equals("TAKE") && Item.löytyyköTargetHuoneesta(target, itemit)) {
                     otettuEsine = ui.take(target);
@@ -118,7 +120,7 @@ public class Main {
                         System.out.println("You already have this item");
                     } else {
                         System.out.println("You picked up the " + otettuEsine);
-                        Item.inventory.add(otettuEsine);
+                        Item.inventory.add(otettuEsine.toUpperCase());
                         System.out.println(Item.inventory);
                     }
                     if (otettuEsine.equals("letter")) {
