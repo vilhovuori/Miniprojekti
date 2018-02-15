@@ -105,9 +105,13 @@ public class Main {
                 } else if (verb.equals("SEARCH") && target.equals("ROOM")) {
                     System.out.println(presentRoom.getDescription());
 
-                } else if (verb.equals("USE") && Item.inventory.contains(target.toUpperCase()) && Item.käyköHuoneessa(target,itemit)) {
+                } else if (verb.equals("USE") && Item.inventory.contains(target.toUpperCase())) {
+                    if (Item.käyköHuoneessa(target,itemit)){
                     kayttoEsine = ui.take(target);
                     System.out.println(ui.use(target));
+                    } else {
+                        System.out.println("You cannot use this item in this room.");
+                    }
 
                 } else if (verb.equals("TAKE") && Item.löytyyköTargetHuoneesta(target, itemit)) {
                     otettuEsine = ui.take(target);
