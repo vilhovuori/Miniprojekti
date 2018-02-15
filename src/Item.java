@@ -6,7 +6,12 @@ import java.util.List;
 
 /* Tässä luokassa luodaan Item-olioiden konstruktori sekä Arraylistit. Inventory-listaan kerätään pelaajan keräämät itemit ja usedItems-listaan
   * kerätään itemit, jotka on käytetty.
-   * IteminRoom-metodi käy läpi taulukon.*/
+   * ItemInRoom-metodi käy läpi taulukon, johon on kerätty pelin esineet ja etsii pelaajan syöttämää esinettä niistä.
+   * Jos syötetty esine löytyy taulukosta sekä pelaaja on sillä hetkellä samassa huoneessa kuin pelaajan syöttämä esine, palautuu true.
+   * Kutsutaan main-luokasta silloin kun halutaan tarkistaa, onko pelaajalla jo olemassa jokin esine, ja jos on sitä ei voi ottaa uudestaan.
+   *
+   * Pitkälti samat toiminnot esiintyy metodissa usableInRoom. Eli kun pelaaja haluaa käyttää jotain esinettä, metodi tarkistaa onko esinettä mahdollista
+   * käyttää kyseisessä huoneessa. Kunkin esineen käyttö on sidottu vain yhteen tiettyyn huoneeseen. Ainoastaan letterin voi lukea kaikissa huoneissa*/
 
 public class Item {
 
