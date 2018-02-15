@@ -42,4 +42,8 @@ public class Room {
     public int[] getDirections() {
         return directions;
     }
+
+    public void setDirections(int[] directions) {
+        this.directions = directions;
+    }
 }

@@ -9,6 +9,7 @@ public class Main {
     static Room presentRoom;
     static int compassPoint;
     static String otettuEsine;
+    static String kayttoEsine;
     static Map<Integer, Room> building = new HashMap<>();
 
     static {
@@ -104,6 +105,15 @@ public class Main {
                 } else if (verb.equals("SEARCH") && target.equals("ROOM")) {
                     System.out.println(presentRoom.getDescription());
 
+                } else if (verb.equals("USE") && Item.inventory.contains(target)) {
+                kayttoEsine = ui.take(target);
+                    if (!Item.inventory.contains(kayttoEsine)) {
+                    System.out.println("You do not have this item");
+                    } else {
+                    ui.use(target);
+
+                    }
+
                 } else if (verb.equals("TAKE") && Item.löytyyköTargetHuoneesta(target, itemit)) {
                     otettuEsine = ui.take(target);
                     if (Item.inventory.contains(otettuEsine)) {
@@ -114,96 +124,96 @@ public class Main {
                         System.out.println(Item.inventory);
                         if (otettuEsine.equals("letter")) {
                             System.out.println("There is a note in the letter which says: 'Instructions for good coffee: take some fresh water and aromatic coffee beans.'");
-                        }
-                    }
-                } else if (verb.equals("CHECK") && target.equals("ITEMS")) {
-                    System.out.println(Item.inventory);
-
-                } else {
-                    System.out.println("Your command does not make any sense. Try again.");
-                }
-            } catch (ArrayIndexOutOfBoundsException ex) {
-                System.out.println("Are you stupid? You can't do that.");
-                continue;
-            } catch (NullPointerException ex) {
-                System.out.println("What were you thinking?!? You can't do that..");
-                continue;
-            }
-            String[] nimet = new String[]{
-                    "Aino", "Aleksi H.", "Aleksi P.", "Jani", "Johanna J.", "Heidi K", "Joni",
-                    "Tom", "Juuso", "Hanna-Leena", "Johanna L.", "Milla", "Vellu", "Heidi N",
-                    "Sami", "Outi", "Elina", "Renne", "Olli", "Toni", "Paula", "Leena", "Nikita",
-                    "Tiina K.", "Tiina E.", "Antti", "Ville", "Waltteri", "Satu", "Tommi", "Samu"
-            };
-            List<String> nimilista = new ArrayList<>(Arrays.asList(nimet));
-            Collections.shuffle(nimilista);
-            String randomnimi = nimilista.get(0);
-
-            Random randomGenerator = new Random();
-            int playerRandomDamage = randomGenerator.nextInt(15);
-            int zombieRandomDamage = randomGenerator.nextInt(20);
-            int playerHealth = 20;
-            int playerDamage = playerRandomDamage;
-            int zombieHealth = 15;
-            int zombieDamage = zombieRandomDamage;
-            String zombieName = randomnimi;
 
 
-            while (presentRoom == building.get(2) && zombieHealth == 15) {
-                System.out.println("By the holy coffee beans, you have encountered a zombie, Coffee Zombie that creeps by the name of" + " " + randomnimi + "!" + " " +
-                        "\nTime to take out your weapons, hopefully you brought more then your lefty and right.");
-
-                while (true) {
-
-                    System.out.println("Fight, what do you want to use, knife or fist to take up this channel?");
-                    System.out.println("Your HP:" + playerHealth + " " + "Coffee zombie's HP:" + zombieHealth);
-                    String taisteluToiminto = scanner.nextLine().toUpperCase();
-                    if (Item.inventory.contains(knife)) {
-                        playerDamage += 5;
-                    }
-                    if (taisteluToiminto.matches("KNIFE|FIST")) {
-                        zombieHealth -= playerDamage;
-                        playerHealth -= zombieDamage;
-
-                        if (zombieHealth > 0 && playerHealth > 0) {
-                            System.out.println("The Zombie is still alive, so...");
-                        } else if (zombieHealth > 0 && playerHealth <= 0) {
-                            System.out.println("Coffee zombie lives, you do not");
-                            gameStatus = false;
-                            try (FileReader fr = new FileReader("gameover.txt");
-                                 BufferedReader in = new BufferedReader(fr)) {
-                                StringBuilder teksti = new StringBuilder();
-                                String rivi;
-                                while ((rivi = in.readLine()) != null) {
-                                    teksti.append(rivi).append("\n");
-                                }
-                                tulos = teksti.toString();
-                                System.out.println(tulos);
-                            } catch (FileNotFoundException ex) {
-                                System.out.println("Virhe: tiedostoa ei löytynyt");
-                            } catch (IOException ex) {
-                                System.out.println("Virhe: muu virhe lukiessa");
-                            }
-
-                            break;
+                        } else if (verb.equals("CHECK") && target.equals("ITEMS")) {
+                            System.out.println(Item.inventory);
 
                         } else {
-                            System.out.println("You are victorious! YOU KILLED THE ZOMBIE, but for how long does it stay dead!");
-                            break;
-                        }
-                    } else {
-                        System.out.println("You don't need to use your head literally, but it is indeed needed to type something that is asked of you!");
-                    }
+                            System.out.println("Your command does not make any sense. Try again.");
 
+                        } catch(ArrayIndexOutOfBoundsException ex){
+                            System.out.println("Are you stupid? You can't do that.");
+                            continue;
+                        } catch(NullPointerException ex){
+                            System.out.println("What were you thinking?!? You can't do that..");
+                            continue;
+                        }
+                        String[] nimet = new String[]{
+                                "Aino", "Aleksi H.", "Aleksi P.", "Jani", "Johanna J.", "Heidi K", "Joni",
+                                "Tom", "Juuso", "Hanna-Leena", "Johanna L.", "Milla", "Vellu", "Heidi N",
+                                "Sami", "Outi", "Elina", "Renne", "Olli", "Toni", "Paula", "Leena", "Nikita",
+                                "Tiina K.", "Tiina E.", "Antti", "Ville", "Waltteri", "Satu", "Tommi", "Samu"
+                        };
+                        List<String> nimilista = new ArrayList<>(Arrays.asList(nimet));
+                        Collections.shuffle(nimilista);
+                        String randomnimi = nimilista.get(0);
+
+                        Random randomGenerator = new Random();
+                        int playerRandomDamage = randomGenerator.nextInt(15);
+                        int zombieRandomDamage = randomGenerator.nextInt(20);
+                        int playerHealth = 20;
+                        int playerDamage = playerRandomDamage;
+                        int zombieHealth = 15;
+                        int zombieDamage = zombieRandomDamage;
+                        String zombieName = randomnimi;
+
+
+                        while (presentRoom == building.get(2) && zombieHealth == 15) {
+                            System.out.println("By the holy coffee beans, you have encountered a zombie, Coffee Zombie that creeps by the name of" + " " + randomnimi + "!" + " " +
+                                    "\nTime to take out your weapons, hopefully you brought more then your lefty and right.");
+
+                            while (true) {
+
+                                System.out.println("Fight, what do you want to use, knife or fist to take up this channel?");
+                                System.out.println("Your HP:" + playerHealth + " " + "Coffee zombie's HP:" + zombieHealth);
+                                String taisteluToiminto = scanner.nextLine().toUpperCase();
+                                if (Item.inventory.contains(knife)) {
+                                    playerDamage += 5;
+                                }
+                                if (taisteluToiminto.matches("KNIFE|FIST")) {
+                                    zombieHealth -= playerDamage;
+                                    playerHealth -= zombieDamage;
+
+                                    if (zombieHealth > 0 && playerHealth > 0) {
+                                        System.out.println("The Zombie is still alive, so...");
+                                    } else if (zombieHealth > 0 && playerHealth <= 0) {
+                                        System.out.println("Coffee zombie lives, you do not");
+                                        gameStatus = false;
+                                        try (FileReader fr = new FileReader("gameover.txt");
+                                             BufferedReader in = new BufferedReader(fr)) {
+                                            StringBuilder teksti = new StringBuilder();
+                                            String rivi;
+                                            while ((rivi = in.readLine()) != null) {
+                                                teksti.append(rivi).append("\n");
+                                            }
+                                            tulos = teksti.toString();
+                                            System.out.println(tulos);
+                                        } catch (FileNotFoundException ex) {
+                                            System.out.println("Virhe: tiedostoa ei löytynyt");
+                                        } catch (IOException ex) {
+                                            System.out.println("Virhe: muu virhe lukiessa");
+                                        }
+
+                                        break;
+
+                                    } else {
+                                        System.out.println("You are victorious! YOU KILLED THE ZOMBIE, but for how long does it stay dead!");
+                                        break;
+                                    }
+                                } else {
+                                    System.out.println("You don't need to use your head literally, but it is indeed needed to type something that is asked of you!");
+                                }
+
+
+                            }
+                        }
+
+
+                    }
 
                 }
             }
-
-
-        }
-
-    }
-}
 
 
 //    class action{}

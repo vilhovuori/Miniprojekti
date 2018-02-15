@@ -38,7 +38,8 @@ public class UserInterface {
                 break;
             case "KEY":
                 u = "You opened the door.";
-            //    Main.building.get(6).set
+               Main.building.get(3).setDirections(new int[]{2, -1, -1, 4});
+               Main.building.get(4).setDirections(new int[]{1, 3, -1, -1});
                 break;
             case "COFFEE":
                 u = "You put the coffee in the coffee machine.";
