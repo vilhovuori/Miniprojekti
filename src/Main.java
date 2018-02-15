@@ -37,11 +37,12 @@ public class Main {
         UserInterface ui = new UserInterface();
         boolean gameStatus = true;
 
-        Item knife = new Item("veitsi", building.get(0) , "Zombie");
-        Item doorKey = new Item ("Avain oveen", building.get(2), "lukko");
-        Item coffee = new Item("kahvi", building.get(0), "kahvinkeitin");
-        Item coffeeKey = new Item("Avain keittimeen", building.get(3), "kahvinkeitin");
-        Item letter = new Item ("kirje", building.get(1), null );
+        Item knife = new Item("knife", building.get(0) , "Zombie");
+        Item doorKey = new Item ("Ke y to the door", building.get(2), "lukko");
+        Item coffee = new Item("coffeebeans", building.get(0), "kahvinkeitin");
+        Item coffeeKey = new Item("Key to the coffeemachine", building.get(3), "kahvinkeitin");
+        Item letter = new Item ("letter", building.get(1), null );
+        Item water = new Item ("water", building.get(5), "kahvinkeitin");
 
         Item.inventory.add("fist");
 
@@ -51,6 +52,7 @@ public class Main {
         itemit.put("COFFEE", coffee);
         itemit.put("COFFEEKEY", coffeeKey);
         itemit.put("LETTER", letter);
+        itemit.put("WATER", water);
 
         Scanner scanner = new Scanner(System.in);
         Player player = new Player();
@@ -157,7 +159,7 @@ public class Main {
                         playerHealth -= zombieDamage;
 
                         if (zombieHealth > 0 && playerHealth > 0) {
-                            System.out.println("It lives so...");
+                            System.out.println("The Zombie is still alive, so...");
                         }
 
                         else if (zombieHealth > 0 && playerHealth <= 0) {

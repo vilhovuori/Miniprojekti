@@ -52,8 +52,12 @@ public class UserInterface {
             case "LETTER":
                 e = "letter";
                 break;
+            case "WATER":
+                e = "water";
+                break;
             default:
                 e = "there is no such item";
+                break;
         }
         return e;
 
