@@ -14,16 +14,16 @@ public class Leena extends JFrame {
     ActionListener listener;
 
     public Leena() {
-
-        window = new JFrame();
-        window.setSize(800, 600);
-        window.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        window.getContentPane().setBackground(Color.BLACK);
-        window.setLayout(new FlowLayout());
-        window.setVisible(true);
-        con = window.getContentPane();
-        input = new JTextField(25);
-        input.addActionListener(listener);
+//
+//        window = new JFrame();
+//        window.setSize(800, 600);
+//        window.setDefaultCloseOperation(EXIT_ON_CLOSE);
+//        window.getContentPane().setBackground(Color.BLACK);
+//        window.setLayout(new FlowLayout());
+//        window.setVisible(true);
+//        con = window.getContentPane();
+//        input = new JTextField(25);
+//        input.addActionListener(listener);
 
 //        public void actionPerformed(ActionEvent event) {
 //            String text = input.getText();
@@ -102,7 +102,10 @@ public class Leena extends JFrame {
 
     public static void main(String[] args) {
 
-        new Leena().setVisible(true);
+        {
+            System.out.println("\033[31;1mHello\033[0m");
+            System.out.println("\033[32m, Green\033[33m, Yellow\033[34m, Blue\033[0m");
+        }
 
     }
 }
