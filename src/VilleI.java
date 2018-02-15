@@ -9,26 +9,27 @@ public class VilleI {
     static Room presentRoom;
     static int compassPoint;
     static String otettuEsine;
+    static String kayttoEsine;
     static Map<Integer, Room> building = new HashMap<>();
 
     static {
 
-        Room huone = new Room("Cafeteria", 0, "You are in the Cafeteria. There are doors to the south and east. A knife is lying on the floor. " +
+        Room huone = new Room("Cafeteria", 0, "You are in the Cafeteria.\nThere are doors to the south and east. A knife is lying on the floor.\n" +
                 "A bag of freshly ground coffee is placed on one of the dining tables.", new int[]{-1, 1, 5, -1});
         building.put(huone.getRoomNumber(), huone);
-        huone = new Room("Lobby", 1, "You are in the Lobby. There are doors to the east, south and west. " +
-                "A reception desk stands in the middle of the room, but there's no one there. A letter is placed on the reception desk.", new int[]{-1, 2, 4, 0});
+        huone = new Room("Lobby", 1, "You are in the Lobby.\nThere are doors to the east, south and west." +
+                "\nA reception desk stands in the middle of the room, but there's no one there. A letter is placed on the reception desk.", new int[]{-1, 2, 4, 0});
         building.put(huone.getRoomNumber(), huone);
-        huone = new Room("Office", 2, "You are in Office. There are doors to the south and west. A sad, broken coffee machine stands in the corner. " +
-                "But wait, something seems to be lurking behind the machine...", new int[]{-1, -1, 3, 1});
+        huone = new Room("Office", 2, "You are in Office.\nThere are doors to the south and west.\nA sad, broken coffee machine stands in the corner. " +
+                "\nBut wait, something seems to be lurking behind the machine...", new int[]{-1, -1, 3, 1});
         building.put(huone.getRoomNumber(), huone);
         huone = new Room("Meeting room", 3, "You are in the Meeting Room. There are doors to the north and west. The western door is locked. " +
-                "A key to the coffee maker lies on the table the middle of the room.", new int[]{2, -1, -1, -1});
+                "\nThe wire to the coffee maker lies on the table the middle of the room.", new int[]{2, -1, -1, -1});
         building.put(huone.getRoomNumber(), huone);
-        huone = new Room("Classroom", 4, "You are in the Classroom. There's a door to the north and a locked door to the east. A coffee maker stands in the corner, but it's locked. " +
-                "In the other corner there's a thing that resembles a coffee bag with the label: \"KORVIKE-COFFEE\".", new int[]{1, -1, -1, -1});
+        huone = new Room("Classroom", 4, "You are in the Classroom.\nThere's a door to the north and a locked door to the east. A coffee maker stands in the corner, but there's no electric wire. "
+                , new int[]{1, -1, -1, -1});
         building.put(huone.getRoomNumber(), huone);
-        huone = new Room("Toilet", 5, "You are in the Toilet. There's a to the north. There's a sink by the east wall and water is running from the faucet.", new int[]{0, -1, -1, -1});
+        huone = new Room("Toilet", 5, "You are in the Toilet. \nThere's a door to the north. There's a sink by the east wall and water is running from the faucet.", new int[]{0, -1, -1, -1});
         building.put(huone.getRoomNumber(), huone);
         presentRoom = building.get(4);
     }
@@ -37,20 +38,20 @@ public class VilleI {
         UserInterface ui = new UserInterface();
         boolean gameStatus = true;
 
-        Item knife = new Item("knife", building.get(0), "Zombie");
-        Item doorKey = new Item("Ke y to the door", building.get(2), "lukko");
-        Item coffee = new Item("coffeebeans", building.get(0), "kahvinkeitin");
-        Item coffeeKey = new Item("Key to the coffeemachine", building.get(3), "kahvinkeitin");
+        Item knife = new Item("knife", building.get(0), building.get(2));
+        Item key = new Item("Key to the lock on the door", building.get(2), building.get(3));
+        Item coffee = new Item("coffeebeans", building.get(0), building.get(4));
+        Item wire = new Item("Electric wire for the coffee machine", building.get(3), building.get(4));
         Item letter = new Item("letter", building.get(1), null);
-        Item water = new Item("water", building.get(5), "kahvinkeitin");
+        Item water = new Item("water", building.get(5), building.get(4));
 
         Item.inventory.add("fist");
 
         HashMap<String, Item> itemit = new HashMap<>();
         itemit.put("KNIFE", knife);
-        itemit.put("DOORKEY", doorKey);
+        itemit.put("KEY", key);
         itemit.put("COFFEE", coffee);
-        itemit.put("COFFEEKEY", coffeeKey);
+        itemit.put("WIRE", wire);
         itemit.put("LETTER", letter);
         itemit.put("WATER", water);
 
@@ -75,7 +76,11 @@ public class VilleI {
 
         String name = scanner.nextLine();
         player.setPlayerName(name);
-        System.out.println(presentRoom.getDescription());
+        System.out.println("It's 5.30 pm. You are all alone in the Academy classroom, working hard on your programming project." +
+                "\nYour brain is starting to overload from all the fore-loops, so you feel the urge to sip a cup of steaming hot coffee.\n" +
+                "You notice the coffee maker in the corner, but some scoundrel has stolen the electric wire.\n" +
+                "You need coffee to survive. Go explore your surroundings... ");
+
         while (gameStatus == true) {
             try {
                 System.out.println("What do you wish to do, " + name + "?");
@@ -85,9 +90,9 @@ public class VilleI {
                 String[] commandPart = command.split(" ");
                 String verb = commandPart[0].toUpperCase(); //verb part
                 String target = commandPart[1].toUpperCase();
-
-
-                if (verb.equals("GO") && (target.matches("NORTH|SOUTH|EAST|WEST"))) { //
+                if (verb.equals("HELP") && target.equals("ME")) {
+                    System.out.println(ui.help());
+                } else if (verb.equals("GO") && (target.matches("NORTH|SOUTH|EAST|WEST"))) { //
                     compassPoint = ui.go(target);
 
                     int adjacentRoom = presentRoom.getDirections()[compassPoint];
@@ -100,18 +105,26 @@ public class VilleI {
                 } else if (verb.equals("SEARCH") && target.equals("ROOM")) {
                     System.out.println(presentRoom.getDescription());
 
+                } else if (verb.equals("USE") && Item.inventory.contains(target.toUpperCase()) && Item.käyköHuoneessa(target,itemit)) {
+                    kayttoEsine = ui.take(target);
+                    System.out.println(ui.use(target));
+
                 } else if (verb.equals("TAKE") && Item.löytyyköTargetHuoneesta(target, itemit)) {
                     otettuEsine = ui.take(target);
                     if (Item.inventory.contains(otettuEsine)) {
                         System.out.println("You already have this item");
                     } else {
                         System.out.println("You picked up the " + otettuEsine);
-                        Item.inventory.add(otettuEsine);
+                        Item.inventory.add(otettuEsine.toUpperCase());
                         System.out.println(Item.inventory);
-                        if (otettuEsine.equals("letter")) {
-                            System.out.println("Instructions for good coffee: take some fresh water and aromatic coffee beans.");
-                        }
                     }
+                    if (otettuEsine.equals("letter")) {
+                        System.out.println("There is a note in the letter which says: 'Instructions for good coffee: take some fresh water and aromatic coffee beans.'");
+                    }
+
+                } else if (verb.equals("CHECK") && target.equals("ITEMS")) {
+                    System.out.println(Item.inventory);
+
                 } else {
                     System.out.println("Your command does not make any sense. Try again.");
                 }
@@ -123,10 +136,10 @@ public class VilleI {
                 continue;
             }
             String[] nimet = new String[]{
-                    "Aino", "Aleksi H.", "Aleksi P.", "Jani", "Johanna J.", "Heidi K", "Joni",
+                    "Aino", "Aleksi H.", "Aleksi P", "Jani", "Johanna J", "Heidi K", "Joni",
                     "Tom", "Juuso", "Hanna-Leena", "Johanna L.", "Milla", "Vellu", "Heidi N",
                     "Sami", "Outi", "Elina", "Renne", "Olli", "Toni", "Paula", "Leena", "Nikita",
-                    "Tiina K.", "Tiina E.", "Antti", "Ville", "Waltteri", "Satu", "Tommi", "Samu"
+                    "Tiina K", "Tiina E", "Antti", "Ville", "Waltteri", "Satu", "Tommi", "Samu"
             };
             List<String> nimilista = new ArrayList<>(Arrays.asList(nimet));
             Collections.shuffle(nimilista);
@@ -141,6 +154,7 @@ public class VilleI {
             int zombieDamage = zombieRandomDamage;
             String zombieName = randomnimi;
 
+
             while (presentRoom == building.get(2) && zombieHealth == 15) {
                 System.out.println("By the holy coffee beans, you have encountered a zombie, Coffee Zombie that creeps by the name of" + " " + randomnimi + "!" + " " +
                         "Time to take out your weapons, hopefully you brought more then your lefty and right.");
@@ -152,13 +166,14 @@ public class VilleI {
                     String taisteluToiminto = scanner.nextLine().toUpperCase();
 
                     if (taisteluToiminto.matches("KNIFE|FIST")) {
-                        if (taisteluToiminto.matches("KNIFE")&&(Item.inventory.contains(knife))) {
+                        if (taisteluToiminto.matches("KNIFE") && (Item.inventory.contains(knife))) {
                             playerDamage += 5;
-                        }
-                        else if (taisteluToiminto.matches("KNIFE")&&(!Item.inventory.contains(knife))) {
+                        } else if (taisteluToiminto.matches("KNIFE") && (!Item.inventory.contains(knife))) {
 //                            playerHealth -= zombieDamage/2;
                             System.out.println("You do not have knife, " +
-                                    "but ended up looking for an imaginary one while" + " " + name + " " +"almost dies in laughter, hahaa, he did already!");continue;}
+                                    "but ended up looking for an imaginary one while" + " " + zombieName + " " + "almost dies in laughter, hahaa, he did already!");
+                            continue;
+                        }
                         zombieHealth -= playerDamage;
                         playerHealth -= zombieDamage;
 
@@ -200,70 +215,9 @@ public class VilleI {
 }
 
 
-
-
-
-
-
-//                    if (Item.inventory.contains(knife)) {
-//                        playerDamage += 5;
-//                    }
-//                    if (!Item.inventory.contains(knife)) {
-//                        playerHealth -= zombieDamage/2;
-//                        System.out.println("You do not have knife, " +
-//                                "but ended up looking for an imaginary one long enough to zombie to take a nice bite of you!");
-//                    }
-
-
-
-
-
-
-//            while (presentRoom ==building.get (2)&& zombieHealth ==15 ) {
-//                System.out.println("By the holy coffee beans, you have encountered a zombie, Coffee Zombie that creeps by the name of" + " "+ randomnimi+"!" +" " +
-//                        "Time to take out your weapons, hopefully you brought more then your lefty and right.");
+//    class action{}
 //
-//                while (true) {
-//
-//                    System.out.println("Fight, what do you want to use, knife or fist to take up this channel?");
-//                    System.out.println("Your HP:" + playerHealth + " " + "Coffee zombie's HP:" +zombieHealth);
-//                    String taisteluToiminto = scanner.nextLine().toUpperCase();
-//
-//                    if (taisteluToiminto.matches("KNIFE")&&(Item.inventory.contains(knife))) {
-//                        zombieHealth -= playerDamage;
-//                        playerHealth -= zombieDamage;}
-////                    } if (taisteluToiminto.matches("KNIFE")&&(!Item.inventory.contains(knife))) {
-////                        playerHealth -= zombieDamage;
-////                        System.out.println("You do not have knife, " +
-////                                "but ended up looking for an imaginary one long enough to zombie to take a nice bite of you!");break;}
-////
-////                        if (zombieHealth > 0 && playerHealth > 0) {
-////                            System.out.println("The Zombie is still alive, so...");
-////                        }
-//
-//                        else if (zombieHealth > 0 && playerHealth <= 0) {
-//                            System.out.println("Coffee zombie lives, you do not");
-//                            gameStatus=false;
-//                            try (FileReader fr = new FileReader("gameover.txt");
-//                                 BufferedReader in = new BufferedReader(fr)){
-//                                StringBuilder teksti = new StringBuilder();
-//                                String rivi;
-//                                while ((rivi = in.readLine()) != null) {
-//                                    teksti.append(rivi).append("\n");
-//                                }
-//                                tulos = teksti.toString();
-//                                System.out.println(tulos);
-//                            } catch (FileNotFoundException ex) {
-//                                System.out.println("Virhe: tiedostoa ei löytynyt");
-//                            } catch (IOException ex) {
-//                                System.out.println("Virhe: muu virhe lukiessa");
-//                            }
-//
-//                            break;
-//
-//                        } else {
-//                            System.out.println("You are victorious! YOU KILLED THE ZOMBIE, but for how long does it stay dead!");
-//                            break;
-//                        }} else {
-//                        System.out.println("You don't need to use your head literally, but it is indeed needed to type something that is asked of you!");
-//                    }
+//    class actionTarget{}
+
+
+
