@@ -170,9 +170,9 @@ public class Main {
                     String taisteluToiminto = scanner.nextLine().toUpperCase();
 
                     if (taisteluToiminto.matches("KNIFE|FIST")) {
-                        if (taisteluToiminto.matches("KNIFE") && (Item.inventory.contains(knife))) {
+                        if (taisteluToiminto.matches("KNIFE") && (Item.inventory.contains("KNIFE"))) {
                             playerDamage += 5;
-                        } else if (taisteluToiminto.matches("KNIFE") && (!Item.inventory.contains(knife))) {
+                        } else if (taisteluToiminto.matches("KNIFE") && (!Item.inventory.contains("KNIFE"))) {
 //                            playerHealth -= zombieDamage/2;
                             System.out.println("You do not have knife, " +
                                     "but ended up looking for an imaginary one while" + " " + zombieName + " " + "almost dies in laughter, hahaa, he did already!");
