@@ -29,13 +29,10 @@ public class UserInterface {
         }
         return d;
     }
-
+/* USE-command for different items. Particular item changes room description. Coffee, water and wire adds one point to the goal.*/
     public String use(String esine) {
         String u;
         switch (esine) {
-            case "KNIFE":
-                u = "You hit the zombie with your knife.";
-                break;
             case "KEY":
                 u = "You opened the door.";
                 Main.building.get(3).setDirections(new int[]{2, -1, -1, 4});
