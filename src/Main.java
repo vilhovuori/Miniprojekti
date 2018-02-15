@@ -206,16 +206,13 @@ public class Main {
                             break;
 
                         } else {
-                            System.out.println("You are victorious!! YOU KILLED THE ZOMBIE, but for how long does it stay dead!");
-                            if (zombieKilledStatus == 0) {
-                                System.out.println("You found a key.");
+                                System.out.println("You are victorious!! YOU KILLED THE ZOMBIE, but for how long does it stay dead!");
+                                if (zombieKilledStatus == 0) {
+                                    System.out.println("You found a key.");
 //                                ui.take("KEY");
-                                Item.inventory.contains("KEY");
-                                Item.inventory.add("KEY");
-                                zombieKilledStatus = 1;
-                                if ((Item.inventory.contains("KEY")) && zombieKilledStatus >= 1) {
-                                    System.out.println("You already have this item");
-                                }
+//                                Item.inventory.contains("KEY");
+                                    Item.inventory.add("KEY");
+                                    zombieKilledStatus ++;
 
                                 //   knife.setItemLocation(null);
 
