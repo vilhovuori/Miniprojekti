@@ -94,6 +94,7 @@ public class UserInterface {
                 String s2 = Main.building.get(0).getDescription();
                 String replaceString2 = s2.replace("A bag of freshly ground coffee is placed on one of the dining tables.", "");
                 Main.building.get(0).setDescription(replaceString2);
+
                 break;
             case "WIRE":
                 e = "WIRE";

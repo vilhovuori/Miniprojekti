@@ -109,8 +109,9 @@ public class Main {
 
                 } else if (verb.equals("USE") && Item.inventory.contains(target.toUpperCase())) {
                     if (Item.useableInRoom(target, itemit)) {
-                     //   kayttoEsine = ui.take(target);
+                        //   kayttoEsine = ui.take(target);
                         System.out.println(ui.use(target));
+                        Item.usedItems.add(target);
                     } else {
                         System.out.println("You cannot use this item in this room.");
                     }
@@ -119,6 +120,8 @@ public class Main {
                     otettuEsine = ui.take(target);
                     if (Item.inventory.contains(otettuEsine)) {
                         System.out.println("You already have this item");
+                    } else if (Item.usedItems.contains(otettuEsine)) {
+                        System.out.println("You have previously taken and used this item.");
                     } else {
                         System.out.println("You picked up the " + otettuEsine);
                         Item.inventory.add(otettuEsine.toUpperCase());
@@ -202,13 +205,13 @@ public class Main {
                             break;
 
                         } else {
-                                System.out.println("You are victorious!! YOU KILLED THE ZOMBIE, but for how long does it stay dead!");
-                                if (zombieKilledStatus == 0) {
-                                    System.out.println("You found a KEY. It has been added to your items.");
+                            System.out.println("You are victorious!! YOU KILLED THE ZOMBIE, but for how long does it stay dead!");
+                            if (zombieKilledStatus == 0) {
+                                System.out.println("You found a KEY. It has been added to your items.");
 //                                ui.take("KEY");
 //                                Item.inventory.contains("KEY");
-                                    Item.inventory.add("KEY");
-                                    zombieKilledStatus ++;
+                                Item.inventory.add("KEY");
+                                zombieKilledStatus++;
 
                                 //   knife.setItemLocation(null);
 

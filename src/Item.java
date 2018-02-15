@@ -10,6 +10,8 @@ public class Item {
     private Room itemLocation;
     private Room targetRoom;
     static ArrayList <String> inventory = new ArrayList<>();
+    static ArrayList <String> usedItems = new ArrayList<>();
+
 
     public Item (String itemName, Room itemLocation, Room targetRoom){
         this.itemName = itemName;
