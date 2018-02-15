@@ -37,12 +37,12 @@ public class Main {
         UserInterface ui = new UserInterface();
         boolean gameStatus = true;
 
-        Item knife = new Item("knife", building.get(0) , "Zombie");
-        Item key = new Item ("Key to the lock on the door", building.get(2), "lukko");
+        Item knife = new Item("knife", building.get(0), "Zombie");
+        Item key = new Item("Key to the lock on the door", building.get(2), "lukko");
         Item coffee = new Item("coffeebeans", building.get(0), "kahvinkeitin");
         Item electricwire = new Item("Electric wire for the coffee machine", building.get(3), "kahvinkeitin");
-        Item letter = new Item ("letter", building.get(1), null );
-        Item water = new Item ("water", building.get(5), "kahvinkeitin");
+        Item letter = new Item("letter", building.get(1), null);
+        Item water = new Item("water", building.get(5), "kahvinkeitin");
 
         Item.inventory.add("fist");
 
@@ -58,7 +58,7 @@ public class Main {
         Player player = new Player();
         String tulos = null;
         try (FileReader fr = new FileReader("title.txt");
-             BufferedReader in = new BufferedReader(fr)){
+             BufferedReader in = new BufferedReader(fr)) {
             StringBuilder teksti = new StringBuilder();
             String rivi;
             while ((rivi = in.readLine()) != null) {
@@ -73,10 +73,10 @@ public class Main {
         }
         System.out.println("Welcome to JavaQuest, may I know your name so we can start writing your tombstone?");
 
-    String name = scanner.nextLine ();
-    player.setPlayerName (name);
+        String name = scanner.nextLine();
+        player.setPlayerName(name);
         System.out.println(presentRoom.getDescription());
-        while (gameStatus==true) {
+        while (gameStatus == true) {
             try {
                 System.out.println("What do you wish to do, " + name + "?");
                 String command = scanner.nextLine();
@@ -85,9 +85,9 @@ public class Main {
                 String[] commandPart = command.split(" ");
                 String verb = commandPart[0].toUpperCase(); //verb part
                 String target = commandPart[1].toUpperCase();
-
-
-                if (verb.equals("GO") && (target.matches("NORTH|SOUTH|EAST|WEST"))) { //
+                if (verb.equals("HELP") && target.equals("ME")) {
+                    System.out.println(ui.help());
+                } else if (verb.equals("GO") && (target.matches("NORTH|SOUTH|EAST|WEST"))) { //
                     compassPoint = ui.go(target);
 
                     int adjacentRoom = presentRoom.getDirections()[compassPoint];
@@ -97,21 +97,21 @@ public class Main {
                         presentRoom = building.get(presentRoom.getDirections()[compassPoint]);
                         System.out.println(presentRoom.getDescription());
                     }
-                } else if (verb.equals("SEARCH")&& target.equals("ROOM")) {
-                        System.out.println(presentRoom.getDescription());
+                } else if (verb.equals("SEARCH") && target.equals("ROOM")) {
+                    System.out.println(presentRoom.getDescription());
 
-                } else if (verb.equals("TAKE") && Item.löytyyköTargetHuoneesta(target, itemit)){
-                        otettuEsine = ui.take(target);
-                                if (Item.inventory.contains(otettuEsine)) {
-                           System.out.println("You already have this item");
-                        } else {
-                            System.out.println("You picked up the " + otettuEsine);
-                            Item.inventory.add(otettuEsine);
-                            System.out.println(Item.inventory);
-                                if (otettuEsine.equals("letter")) {
-                                    System.out.println("Instructions for good coffee: take some fresh water and aromatic coffee beans.");
-                                }
+                } else if (verb.equals("TAKE") && Item.löytyyköTargetHuoneesta(target, itemit)) {
+                    otettuEsine = ui.take(target);
+                    if (Item.inventory.contains(otettuEsine)) {
+                        System.out.println("You already have this item");
+                    } else {
+                        System.out.println("You picked up the " + otettuEsine);
+                        Item.inventory.add(otettuEsine);
+                        System.out.println(Item.inventory);
+                        if (otettuEsine.equals("letter")) {
+                            System.out.println("Instructions for good coffee: take some fresh water and aromatic coffee beans.");
                         }
+                    }
                 } else {
                     System.out.println("Your command does not make any sense. Try again.");
                 }
@@ -122,15 +122,15 @@ public class Main {
                 System.out.println("What were you thinking?!? You can't do that..");
                 continue;
             }
-                String[] nimet = new String[]{
-                        "Aino", "Aleksi H.", "Aleksi P.", "Jani", "Johanna J.", "Heidi K", "Joni",
-                        "Tom", "Juuso", "Hanna-Leena", "Johanna L.", "Milla", "Vellu", "Heidi N",
-                        "Sami", "Outi", "Elina", "Renne", "Olli", "Toni", "Paula", "Leena", "Nikita",
-                        "Tiina K.", "Tiina E.", "Antti", "Ville", "Waltteri", "Satu", "Tommi", "Samu"
-                };
-                List<String> nimilista = new ArrayList<>(Arrays.asList(nimet));
-                Collections.shuffle(nimilista);
-                String randomnimi = nimilista.get(0);
+            String[] nimet = new String[]{
+                    "Aino", "Aleksi H.", "Aleksi P.", "Jani", "Johanna J.", "Heidi K", "Joni",
+                    "Tom", "Juuso", "Hanna-Leena", "Johanna L.", "Milla", "Vellu", "Heidi N",
+                    "Sami", "Outi", "Elina", "Renne", "Olli", "Toni", "Paula", "Leena", "Nikita",
+                    "Tiina K.", "Tiina E.", "Antti", "Ville", "Waltteri", "Satu", "Tommi", "Samu"
+            };
+            List<String> nimilista = new ArrayList<>(Arrays.asList(nimet));
+            Collections.shuffle(nimilista);
+            String randomnimi = nimilista.get(0);
 
             Random randomGenerator = new Random();
             int playerRandomDamage = randomGenerator.nextInt(15);
@@ -142,31 +142,29 @@ public class Main {
             String zombieName = randomnimi;
 
 
-
-            while (presentRoom ==building.get (2)&& zombieHealth ==15 ) {
-                System.out.println("By the holy coffee beans, you have encountered a zombie, Coffee Zombie that creeps by the name of" + " "+ randomnimi+"!" +" " +
+            while (presentRoom == building.get(2) && zombieHealth == 15) {
+                System.out.println("By the holy coffee beans, you have encountered a zombie, Coffee Zombie that creeps by the name of" + " " + randomnimi + "!" + " " +
                         "Time to take out your weapons, hopefully you brought more then your lefty and right.");
 
                 while (true) {
 
                     System.out.println("Fight, what do you want to use, knife or fist to take up this channel?");
-                    System.out.println("Your HP:" + playerHealth + " " + "Coffee zombie's HP:" +zombieHealth);
+                    System.out.println("Your HP:" + playerHealth + " " + "Coffee zombie's HP:" + zombieHealth);
                     String taisteluToiminto = scanner.nextLine().toUpperCase();
                     if (Item.inventory.contains(knife)) {
-                        playerDamage += 5;}
-                    if (taisteluToiminto.matches("KNIFE|FIST")){
+                        playerDamage += 5;
+                    }
+                    if (taisteluToiminto.matches("KNIFE|FIST")) {
                         zombieHealth -= playerDamage;
                         playerHealth -= zombieDamage;
 
                         if (zombieHealth > 0 && playerHealth > 0) {
                             System.out.println("The Zombie is still alive, so...");
-                        }
-
-                        else if (zombieHealth > 0 && playerHealth <= 0) {
+                        } else if (zombieHealth > 0 && playerHealth <= 0) {
                             System.out.println("Coffee zombie lives, you do not");
-                            gameStatus=false;
+                            gameStatus = false;
                             try (FileReader fr = new FileReader("gameover.txt");
-                                 BufferedReader in = new BufferedReader(fr)){
+                                 BufferedReader in = new BufferedReader(fr)) {
                                 StringBuilder teksti = new StringBuilder();
                                 String rivi;
                                 while ((rivi = in.readLine()) != null) {
@@ -185,7 +183,8 @@ public class Main {
                         } else {
                             System.out.println("You are victorious! YOU KILLED THE ZOMBIE, but for how long does it stay dead!");
                             break;
-                        }} else {
+                        }
+                    } else {
                         System.out.println("You don't need to use your head literally, but it is indeed needed to type something that is asked of you!");
                     }
 

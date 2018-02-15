@@ -68,7 +68,7 @@ public class UserInterface {
     }
 
     public String help() {
-        return "Usable commands:\nGO\nUSE\nTAKE\nSEARCH\nOPEN\nINVENTORY\nHELP";
+        return "Usable commands:\nGO DIRECTION\nUSE ITEMNAME\nTAKE ITEMNAME\nSEARCH ROOM\nCHECK ITEMS\nHELP ME";
     }
 
     public String actionTarget() {
