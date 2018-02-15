@@ -8,18 +8,12 @@ public class Item {
 
     private String itemName;
     private Room itemLocation;
-    private String itemTarget;
+    private Room targetRoom;
 
-    public Item (String itemName, Room itemLocation, String itemTarget){
+    public Item (String itemName, Room itemLocation, Room targetRoom){
         this.itemName = itemName;
         this.itemLocation = itemLocation;
-        this.itemTarget = itemTarget;
-    }
-
-    public String useItem(){
-        List<String> lista = Arrays.asList(itemTarget);
-        //if (lista.contains(Target)
-        return null;
+        this.targetRoom = targetRoom;
     }
 
     public String getItemName() {
@@ -38,14 +32,6 @@ public class Item {
         this.itemLocation = itemLocation;
     }
 
-      public String getItemTarget() {
-        return itemTarget;
-    }
-
-    public void setItemTarget(String itemTarget) {
-        this.itemTarget = itemTarget;
-    }
-
     static ArrayList <String> inventory = new ArrayList<>();
 
 
@@ -61,6 +47,17 @@ public class Item {
         return false;
     }
 
+    static public boolean käyköHuoneessa (String target, HashMap<String, Item> itemit) {       //metodi käy läpi taulukon itemit. Jos item löytyy listalta sekä
+        String[] taulukko = {"KNIFE", "DOORKEY","COFFEE", "LETTER","WATER","WIRE"};                       //item on samassa paikassa kun pelaaja, palautuu true. Jos ei ole, peli jatkuu
+        for (String s : taulukko) {
+            if (itemit.containsKey(s) && itemit.get(target).targetRoom == Main.presentRoom) {
+                return true;
+            } else {
+                continue;
+            }
+        }
+        return false;
+    }
 
 
 }

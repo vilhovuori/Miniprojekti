@@ -38,12 +38,12 @@ public class Main {
         UserInterface ui = new UserInterface();
         boolean gameStatus = true;
 
-        Item knife = new Item("knife", building.get(0), "Zombie");
-        Item key = new Item("Key to the lock on the door", building.get(2), "lukko");
-        Item coffee = new Item("coffeebeans", building.get(0), "kahvinkeitin");
-        Item wire = new Item("Electric wire for the coffee machine", building.get(3), "kahvinkeitin");
+        Item knife = new Item("knife", building.get(0), building.get(2));
+        Item key = new Item("Key to the lock on the door", building.get(2), building.get(3));
+        Item coffee = new Item("coffeebeans", building.get(0), building.get(4));
+        Item wire = new Item("Electric wire for the coffee machine", building.get(3), building.get(4));
         Item letter = new Item("letter", building.get(1), null);
-        Item water = new Item("water", building.get(5), "kahvinkeitin");
+        Item water = new Item("water", building.get(5), building.get(4));
 
         Item.inventory.add("fist");
 
@@ -105,7 +105,7 @@ public class Main {
                 } else if (verb.equals("SEARCH") && target.equals("ROOM")) {
                     System.out.println(presentRoom.getDescription());
 
-                } else if (verb.equals("USE") && Item.inventory.contains(target.toUpperCase())) {
+                } else if (verb.equals("USE") && Item.inventory.contains(target.toUpperCase()) && Item.käyköHuoneessa(target,itemit)) {
                     kayttoEsine = ui.take(target);
                     System.out.println(ui.use(target));
 
