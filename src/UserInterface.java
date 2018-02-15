@@ -40,14 +40,14 @@ public class UserInterface {
             case "KNIFE":
                 e = "knife";
                 break;
-            case "DOORKEY":
-                e = "doorkey";
+            case "KEY":
+                e = "key";
                 break;
             case "COFFEE":
                 e = "coffee";
                 break;
-            case "COFFEEKEY":
-                e = "coffeekey";
+            case "ELECTRICWIRE":
+                e = "electricwire";
                 break;
             case "LETTER":
                 e = "letter";
