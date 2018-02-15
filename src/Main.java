@@ -109,9 +109,12 @@ public class Main {
                         Item.inventory.add(otettuEsine);
                         System.out.println(Item.inventory);
                         if (otettuEsine.equals("letter")) {
-                            System.out.println("Instructions for good coffee: take some fresh water and aromatic coffee beans.");
+                            System.out.println("There was a note in the letter which says: 'Instructions for good coffee: take some fresh water and aromatic coffee beans.'");
                         }
                     }
+                } else if (verb.equals("CHECK") && target.equals("ITEMS")) {
+                    System.out.println(Item.inventory);
+
                 } else {
                     System.out.println("Your command does not make any sense. Try again.");
                 }
