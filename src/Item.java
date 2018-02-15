@@ -38,7 +38,7 @@ public class Item {
         this.itemLocation = itemLocation;
     }
 
-    public String getItemTarget() {
+      public String getItemTarget() {
         return itemTarget;
     }
 

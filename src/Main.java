@@ -139,10 +139,10 @@ public class Main {
                 continue;
             }
             String[] nimet = new String[]{
-                    "Aino", "Aleksi H.", "Aleksi P.", "Jani", "Johanna J.", "Heidi K", "Joni",
+                    "Aino", "Aleksi H.", "Aleksi P", "Jani", "Johanna J", "Heidi K", "Joni",
                     "Tom", "Juuso", "Hanna-Leena", "Johanna L.", "Milla", "Vellu", "Heidi N",
                     "Sami", "Outi", "Elina", "Renne", "Olli", "Toni", "Paula", "Leena", "Nikita",
-                    "Tiina K.", "Tiina E.", "Antti", "Ville", "Waltteri", "Satu", "Tommi", "Samu"
+                    "Tiina K", "Tiina E", "Antti", "Ville", "Waltteri", "Satu", "Tommi", "Samu"
             };
             List<String> nimilista = new ArrayList<>(Arrays.asList(nimet));
             Collections.shuffle(nimilista);
@@ -160,17 +160,23 @@ public class Main {
 
             while (presentRoom == building.get(2) && zombieHealth == 15) {
                 System.out.println("By the holy coffee beans, you have encountered a zombie, Coffee Zombie that creeps by the name of" + " " + randomnimi + "!" + " " +
-                        "\nTime to take out your weapons, hopefully you brought more then your lefty and right.");
+                        "Time to take out your weapons, hopefully you brought more then your lefty and right.");
 
                 while (true) {
 
                     System.out.println("Fight, what do you want to use, knife or fist to take up this channel?");
                     System.out.println("Your HP:" + playerHealth + " " + "Coffee zombie's HP:" + zombieHealth);
                     String taisteluToiminto = scanner.nextLine().toUpperCase();
-                    if (Item.inventory.contains(knife)) {
-                        playerDamage += 5;
-                    }
+
                     if (taisteluToiminto.matches("KNIFE|FIST")) {
+                        if (taisteluToiminto.matches("KNIFE") && (Item.inventory.contains(knife))) {
+                            playerDamage += 5;
+                        } else if (taisteluToiminto.matches("KNIFE") && (!Item.inventory.contains(knife))) {
+//                            playerHealth -= zombieDamage/2;
+                            System.out.println("You do not have knife, " +
+                                    "but ended up looking for an imaginary one while" + " " + zombieName + " " + "almost dies in laughter, hahaa, he did already!");
+                            continue;
+                        }
                         zombieHealth -= playerDamage;
                         playerHealth -= zombieDamage;
 
@@ -207,12 +213,12 @@ public class Main {
 
                 }
             }
-
-
         }
-
     }
 }
+
+
+
 
 
 //    class action{}
