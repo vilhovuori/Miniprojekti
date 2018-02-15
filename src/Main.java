@@ -46,7 +46,7 @@ public class Main {
         Item key = new Item(building.get(2), building.get(3));
         Item coffee = new Item(building.get(0), building.get(4));
         Item wire = new Item(building.get(3), building.get(4));
-        Item letter = new Item(building.get(1), new Room(null, 10000, null, null));
+        Item letter = new Item(building.get(1), new Room(10000, null, null));
         Item water = new Item(building.get(5), building.get(4));
 
         Item.inventory.add("FIST");
