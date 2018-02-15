@@ -84,7 +84,7 @@ public class Main {
                 "You notice the coffee maker in the corner, but some scoundrel has stolen the electric wire.\n" +
                 "You need coffee to survive. Go explore your surroundings... ");
 
-        while (gameStatus == true) {
+        while (coffeeMachineStatus<3) {
             try {
                 System.out.println("What do you wish to do, " + name + "?");
                 String command = scanner.nextLine();
@@ -166,7 +166,7 @@ public class Main {
                 System.out.println("By the holy coffee beans, you have encountered a zombie, Coffee Zombie that creeps by the name of" + " " + randomnimi + "!" + " " +
                         "Time to take out your weapons, hopefully you brought more then your lefty and right.");
 
-                while (coffeeMachineStatus<3) {
+                while (true) {
 
                     System.out.println("Fight, what do you want to use, KNIFE or FIST to take up this channel?");
                     System.out.println("Your HP:" + playerHealth + " " + "Coffee zombie's HP:" + zombieHealth);
