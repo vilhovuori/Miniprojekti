@@ -38,9 +38,9 @@ public class Main {
         boolean gameStatus = true;
 
         Item knife = new Item("knife", building.get(0) , "Zombie");
-        Item doorKey = new Item ("Ke y to the door", building.get(2), "lukko");
+        Item key = new Item ("Key to the lock on the door", building.get(2), "lukko");
         Item coffee = new Item("coffeebeans", building.get(0), "kahvinkeitin");
-        Item coffeeKey = new Item("Key to the coffeemachine", building.get(3), "kahvinkeitin");
+        Item electricwire = new Item("Electric wire for the coffee machine", building.get(3), "kahvinkeitin");
         Item letter = new Item ("letter", building.get(1), null );
         Item water = new Item ("water", building.get(5), "kahvinkeitin");
 
@@ -48,9 +48,9 @@ public class Main {
 
         HashMap<String, Item> itemit = new HashMap<>();
         itemit.put("KNIFE", knife);
-        itemit.put("DOORKEY", doorKey);
+        itemit.put("KEY", key);
         itemit.put("COFFEE", coffee);
-        itemit.put("COFFEEKEY", coffeeKey);
+        itemit.put("ELECTRICWIRE", electricwire);
         itemit.put("LETTER", letter);
         itemit.put("WATER", water);
 
