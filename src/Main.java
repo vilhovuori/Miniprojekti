@@ -110,7 +110,7 @@ public class Main {
 
                 } else if (verb.equals("USE") && Item.inventory.contains(target.toUpperCase())) {
                     if (Item.useableInRoom(target, itemit)) {
-                        kayttoEsine = ui.take(target);
+                     //   kayttoEsine = ui.take(target);
                         System.out.println(ui.use(target));
                     } else {
                         System.out.println("You cannot use this item in this room.");
