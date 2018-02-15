@@ -10,6 +10,7 @@ public class Main {
     static int compassPoint;
     static String otettuEsine;
     static String kayttoEsine;
+    static int coffeeMachineStatus = 0;
     static Map<Integer, Room> building = new HashMap<>();
 
     static {
@@ -37,6 +38,8 @@ public class Main {
     public static void main(String[] args) {
         UserInterface ui = new UserInterface();
         boolean gameStatus = true;
+        int zombieKilledStatus = 0;
+
 
         Item knife = new Item("knife", building.get(0), building.get(2));
         Item key = new Item("Key to the lock on the door", building.get(2), building.get(3));
@@ -205,15 +208,33 @@ public class Main {
 
                         } else {
                             System.out.println("You are victorious! YOU KILLED THE ZOMBIE, but for how long does it stay dead!");
-                            break;
-                        }
+                            if (zombieKilledStatus == 0) {
+                                System.out.println("You found a key.");
+//                                ui.take("KEY");
+                                Item.inventory.contains("KEY");
+                                Item.inventory.add("KEY");
+                                zombieKilledStatus = 1;
+                                if ((Item.inventory.contains("KEY")) && zombieKilledStatus>=1) {
+                                    System.out.println("You already have this item");}
+
+                             //   knife.setItemLocation(null);
+
+
+                            }
+
+
+                        break;
+                    }
                     } else {
                         System.out.println("You don't need to use your head literally, but it is indeed needed to type something that is asked of you!");
                     }
 
 
+
                 }
+
             }
+
         }
     }
 }
