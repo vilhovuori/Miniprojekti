@@ -123,7 +123,7 @@ public class UserInterface {
     }
 
     public String help() {
-        return "Usable commands:\nGO DIRECTION\nUSE ITEMNAME\nTAKE ITEMNAME\nSEARCH ROOM\nCHECK ITEMS\nHELP ME\nDuring fight:\nFIST\nKNIFE (if you have one)";
+        return "Usable commands:\nGO + DIRECTION (north, east, south, west)\nUSE + ITEMNAME\nTAKE + ITEMNAME\nSEARCH ROOM\nCHECK ITEMS\nHELP ME\nDuring fight:\nFIST\nKNIFE (if you have one)";
     }
 
     public String actionTarget() {
