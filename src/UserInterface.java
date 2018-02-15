@@ -38,13 +38,17 @@ public class UserInterface {
                 break;
             case "KEY":
                 u = "You opened the door.";
+            //    Main.building.get(6).set
                 break;
             case "COFFEE":
                 u = "You put the coffee in the coffee machine.";
+                String s1=Main.building.get(5).getDescription();
+                String replaceString=s1.replace(" A letter is placed on the reception desk.","");
+                Main.building.get(5).setDescription(replaceString);
                 break;
             case "ELECTRICWIRE":
                 u = "The coffee machine is turned on.";
-                Main.building.get(4).setDescription("Älämölö");
+                Main.building.get(4).setDescription("You are in the Classroom. There's a door to the north and a locked door to the east. A coffee maker stands in the corner, and it is powered. \" +\n" + "In the other corner there's a thing that resembles a coffee bag with the label: \\\"KORVIKE-COFFEE\\\".");
                 break;
             case "LETTER":
                 u = "You openen the letter and it says: 'Instructions for good coffee: take some fresh water and aromatic coffee beans.'";
