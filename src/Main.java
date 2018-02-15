@@ -224,7 +224,7 @@ public class Main {
 
                         if (zombieHealth > 0 && playerHealth > 0) {
                             System.out.println("The Zombie is still alive, so...");
-                        } else if (zombieHealth > 0 && playerHealth <= 0) {
+                        } else if (playerHealth <= 0) {
                             System.out.println("Coffee zombie lives, you do not! Good thing that your tombstone was started carving beforehand, \nso it is ready for you to use, may " + name + " rest in peace.");
                             gameStatus = false;
                             scanner.close();
