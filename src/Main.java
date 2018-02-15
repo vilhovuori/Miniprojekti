@@ -187,7 +187,7 @@ public class Main {
                         if (zombieHealth > 0 && playerHealth > 0) {
                             System.out.println("The Zombie is still alive, so...");
                         } else if (zombieHealth > 0 && playerHealth <= 0) {
-                            System.out.println("Coffee zombie lives, you do not! Good thing that your tombstone was started carving beforehand, so it is ready for you to use, rest in peace.");
+                            System.out.println("Coffee zombie lives, you do not! Good thing that your tombstone was started carving beforehand, so it is ready for you to use, may "+name+" rest in peace.");
                             gameStatus = false;
                             scanner.close();
                             try (FileReader fr = new FileReader("gameover.txt");
