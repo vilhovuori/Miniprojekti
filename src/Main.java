@@ -109,14 +109,14 @@ public class Main {
                     System.out.println(presentRoom.getDescription());
 
                 } else if (verb.equals("USE") && Item.inventory.contains(target.toUpperCase())) {
-                    if (Item.käyköHuoneessa(target,itemit)){
+                    if (Item.useableInRoom(target,itemit)){
                     kayttoEsine = ui.take(target);
                     System.out.println(ui.use(target));
                     } else {
                         System.out.println("You cannot use this item in this room.");
                     }
 
-                } else if (verb.equals("TAKE") && Item.löytyyköTargetHuoneesta(target, itemit)) {
+                } else if (verb.equals("TAKE") && Item.itemInRoom(target, itemit)) {
                     otettuEsine = ui.take(target);
                     if (Item.inventory.contains(otettuEsine)) {
                         System.out.println("You already have this item");
@@ -166,7 +166,7 @@ public class Main {
                 System.out.println("By the holy coffee beans, you have encountered a zombie, Coffee Zombie that creeps by the name of" + " " + randomnimi + "!" + " " +
                         "Time to take out your weapons, hopefully you brought more then your lefty and right.");
 
-                while (true) {
+                while (coffeeMachineStatus<3) {
 
                     System.out.println("Fight, what do you want to use, KNIFE or FIST to take up this channel?");
                     System.out.println("Your HP:" + playerHealth + " " + "Coffee zombie's HP:" + zombieHealth);
@@ -230,6 +230,21 @@ public class Main {
 
 
 
+                }
+                System.out.println("You were able to make fresh coffee and continue your Java project. Congratulations!");
+                try (FileReader fr = new FileReader("end.txt");
+                     BufferedReader in = new BufferedReader(fr)) {
+                    StringBuilder teksti = new StringBuilder();
+                    String rivi;
+                    while ((rivi = in.readLine()) != null) {
+                        teksti.append(rivi).append("\n");
+                    }
+                    tulos = teksti.toString();
+                    System.out.println(tulos);
+                } catch (FileNotFoundException ex) {
+                    System.out.println("Virhe: tiedostoa ei löytynyt");
+                } catch (IOException ex) {
+                    System.out.println("Virhe: muu virhe lukiessa");
                 }
 
             }

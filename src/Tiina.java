@@ -105,7 +105,7 @@ public class Tiina {
                 } else if (verb.equals("SEARCH") && target.equals("ROOM")) {
                     System.out.println(presentRoom.getDescription());
 
-                } else if (verb.equals("USE") && Item.inventory.contains(target.toUpperCase()) && Item.käyköHuoneessa(target,itemit)) {
+                } else if (verb.equals("USE") && Item.inventory.contains(target.toUpperCase()) && Item.useableInRoom(target,itemit)) {
                     kayttoEsine = ui.take(target);
                     System.out.println(ui.use(target));
 

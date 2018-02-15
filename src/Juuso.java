@@ -38,6 +38,7 @@ public class Juuso {
     public static void main(String[] args) {
         UserInterface ui = new UserInterface();
         boolean gameStatus = true;
+        int zombieKilledStatus = 0;
 
 
         Item knife = new Item("knife", building.get(0), building.get(2));
@@ -47,7 +48,7 @@ public class Juuso {
         Item letter = new Item("letter", building.get(1), null);
         Item water = new Item("water", building.get(5), building.get(4));
 
-        Item.inventory.add("fist");
+        Item.inventory.add("FIST");
 
         HashMap<String, Item> itemit = new HashMap<>();
         itemit.put("KNIFE", knife);
@@ -108,14 +109,14 @@ public class Juuso {
                     System.out.println(presentRoom.getDescription());
 
                 } else if (verb.equals("USE") && Item.inventory.contains(target.toUpperCase())) {
-                    if (Item.käyköHuoneessa(target,itemit)){
+                    if (Item.useableInRoom(target,itemit)){
                         kayttoEsine = ui.take(target);
                         System.out.println(ui.use(target));
                     } else {
                         System.out.println("You cannot use this item in this room.");
                     }
 
-                } else if (verb.equals("TAKE") && Item.löytyyköTargetHuoneesta(target, itemit)) {
+                } else if (verb.equals("TAKE") && Item.itemInRoom(target, itemit)) {
                     otettuEsine = ui.take(target);
                     if (Item.inventory.contains(otettuEsine)) {
                         System.out.println("You already have this item");
@@ -167,7 +168,7 @@ public class Juuso {
 
                 while (true) {
 
-                    System.out.println("Fight, what do you want to use, knife or fist to take up this channel?");
+                    System.out.println("Fight, what do you want to use, KNIFE or FIST to take up this channel?");
                     System.out.println("Your HP:" + playerHealth + " " + "Coffee zombie's HP:" + zombieHealth);
                     String taisteluToiminto = scanner.nextLine().toUpperCase();
 
@@ -175,7 +176,6 @@ public class Juuso {
                         if (taisteluToiminto.matches("KNIFE") && (Item.inventory.contains("KNIFE"))) {
                             playerDamage += 5;
                         } else if (taisteluToiminto.matches("KNIFE") && (!Item.inventory.contains("KNIFE"))) {
-//                            playerHealth -= zombieDamage/2;
                             System.out.println("You do not have knife, " +
                                     "but ended up looking for an imaginary one while" + " " + zombieName + " " + "almost dies in laughter, hahaa, he did already!");
                             continue;
@@ -206,7 +206,22 @@ public class Juuso {
                             break;
 
                         } else {
-                            System.out.println("You are victorious! YOU KILLED THE ZOMBIE, but for how long does it stay dead!");
+                            System.out.println("You are victorious!! YOU KILLED THE ZOMBIE, but for how long does it stay dead!");
+                            if (zombieKilledStatus == 0) {
+                                System.out.println("You found a key.");
+//                                ui.take("KEY");
+                                Item.inventory.contains("KEY");
+                                Item.inventory.add("KEY");
+                                zombieKilledStatus = 1;
+                                if ((Item.inventory.contains("KEY")) && zombieKilledStatus>=1) {
+                                    System.out.println("You already have this item");}
+
+                                //   knife.setItemLocation(null);
+
+
+                            }
+
+
                             break;
                         }
                     } else {
@@ -214,8 +229,11 @@ public class Juuso {
                     }
 
 
+
                 }
+
             }
+
         }
     }
 }
