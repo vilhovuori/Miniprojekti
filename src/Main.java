@@ -234,7 +234,7 @@ public class Main {
             }
 
         }
-        System.out.println("You were able to make fresh coffee and continue your Java project. Congratulations!");
+        System.out.println("You were able to make fresh coffee and continue your Java project. Hopefully you will remember that today your bodycount on this road has risen by " +zombiecounter+ ", Congratulations!");
         try (FileReader fr = new FileReader("end.txt");
              BufferedReader in = new BufferedReader(fr)) {
             StringBuilder teksti = new StringBuilder();
