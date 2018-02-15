@@ -135,6 +135,11 @@ public class Main {
 
                 } else {
                     System.out.println("Your command does not make any sense. Try again.");
+                    errorCount++;
+                    if (errorCount == 3) {
+                        System.out.println("A little voice in your head says: Help me");
+                        errorCount = 0;
+                    }
                 }
             } catch (ArrayIndexOutOfBoundsException ex) {
                 System.out.println("Are you stupid? You can't do that.");
@@ -213,7 +218,7 @@ public class Main {
                         if (zombieHealth > 0 && playerHealth > 0) {
                             System.out.println("The Zombie is still alive, so...");
                         } else if (zombieHealth > 0 && playerHealth <= 0) {
-                            System.out.println("Coffee zombie lives, you do not! Good thing that your tombstone was started carving beforehand, so it is ready for you to use, may "+name+" rest in peace.");
+                            System.out.println("Coffee zombie lives, you do not! Good thing that your tombstone was started carving beforehand, \nso it is ready for you to use, may "+name+" rest in peace.");
                             gameStatus = false;
                             scanner.close();
                             try (FileReader fr = new FileReader("gameover.txt");
@@ -262,7 +267,7 @@ public class Main {
 
         }
         if (gameStatus==true) {
-        System.out.println("You were able to make fresh coffee and continue your Java project. Hopefully, you will remember that today, your bodycount on this road has risen by " +zombiecounter+ ", Congratulations and best of luck in the future!");
+        System.out.println("You were able to make fresh coffee and continue your Java project. Hopefully, you will remember that today, \n your bodycount on this road has risen by " +zombiecounter+ ", \nCongratulations and best of luck in the future!");
         try (FileReader fr = new FileReader("end.txt");
              BufferedReader in = new BufferedReader(fr)) {
             StringBuilder teksti = new StringBuilder();
