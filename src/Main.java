@@ -14,22 +14,22 @@ public class Main {
 
     static {
 
-        Room huone = new Room("Cafeteria", 0, "\nYou are in the Cafeteria.\nThere are doors to the south and east. A knife is lying on the floor.\n" +
+        Room huone = new Room("Cafeteria", 0, "\nYou are in the Cafeteria.\nThere are doors to the south and east. A knife is lying on the floor and it is bloody, but who cares.\n" +
                 "A bag of freshly ground coffee is placed on one of the dining tables.", new int[]{-1, 1, 5, -1});
         building.put(huone.getRoomNumber(), huone);
         huone = new Room("Lobby", 1, "\nYou are in the Lobby.\nThere are doors to the east, south and west." +
-                "\nA reception desk stands in the middle of the room, but there's no one there. A letter is placed on the reception desk.", new int[]{-1, 2, 4, 0});
+                "\nA reception desk stands in the middle of the room, but there's no one there, thank god. A letter is placed on the reception desk.", new int[]{-1, 2, 4, 0});
         building.put(huone.getRoomNumber(), huone);
         huone = new Room("Office", 2, "\nYou are in Office.\nThere are doors to the south and west.\nA sad, broken coffee machine stands in the corner. " + "\n*****" +
                 "\nBut wait, something seems to be lurking behind the machine...", new int[]{-1, -1, 3, 1});
         building.put(huone.getRoomNumber(), huone);
         huone = new Room("Meeting room", 3, "\nYou are in the Meeting Room. There are doors to the north and west. The western door is locked. " +
-                "\nThe wire to the coffee maker lies on the table the middle of the room.", new int[]{2, -1, -1, -1});
+                "\nThe wire to the coffee maker lies on the table the middle of the room, may the scoundrel rest in peace.", new int[]{2, -1, -1, -1});
         building.put(huone.getRoomNumber(), huone);
         huone = new Room("Classroom", 4, "\nYou are in the Classroom.\nThere's a door to the north and a locked door to the east. A coffee maker stands in the corner, but there's no electric wire. "
                 , new int[]{1, -1, -1, -1});
         building.put(huone.getRoomNumber(), huone);
-        huone = new Room("Toilet", 5, "\nYou are in the Toilet. \nThere's a door to the north. There's a sink by the east wall and water is running from the faucet.", new int[]{0, -1, -1, -1});
+        huone = new Room("Toilet", 5, "\nYou are in the Toilet. \nThere's a door to the north. There's a sink by the east wall and water is running from the faucet, does not anybody care about the environment anymore?", new int[]{0, -1, -1, -1});
         building.put(huone.getRoomNumber(), huone);
         presentRoom = building.get(4);
     }
@@ -187,7 +187,7 @@ public class Main {
                         if (zombieHealth > 0 && playerHealth > 0) {
                             System.out.println("The Zombie is still alive, so...");
                         } else if (zombieHealth > 0 && playerHealth <= 0) {
-                            System.out.println("Coffee zombie lives, you do not");
+                            System.out.println("Coffee zombie lives, you do not! Good thing that your tombstone was started carving beforehand, so it is ready for you to use, rest in peace.");
                             gameStatus = false;
                             scanner.close();
                             try (FileReader fr = new FileReader("gameover.txt");
@@ -236,7 +236,7 @@ public class Main {
 
         }
         if (gameStatus==true) {
-        System.out.println("You were able to make fresh coffee and continue your Java project. Hopefully you will remember that today your bodycount on this road has risen by " +zombiecounter+ ", Congratulations!");
+        System.out.println("You were able to make fresh coffee and continue your Java project. Hopefully, you will remember that today, your bodycount on this road has risen by " +zombiecounter+ ", Congratulations and best of luck in the future!");
         try (FileReader fr = new FileReader("end.txt");
              BufferedReader in = new BufferedReader(fr)) {
             StringBuilder teksti = new StringBuilder();
