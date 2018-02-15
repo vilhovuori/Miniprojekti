@@ -48,7 +48,7 @@ public class Main {
         Item letter = new Item("letter", building.get(1), null);
         Item water = new Item("water", building.get(5), building.get(4));
 
-        Item.inventory.add("fist");
+        Item.inventory.add("FIST");
 
         HashMap<String, Item> itemit = new HashMap<>();
         itemit.put("KNIFE", knife);
@@ -168,7 +168,7 @@ public class Main {
 
                 while (true) {
 
-                    System.out.println("Fight, what do you want to use, knife or fist to take up this channel?");
+                    System.out.println("Fight, what do you want to use, KNIFE or FIST to take up this channel?");
                     System.out.println("Your HP:" + playerHealth + " " + "Coffee zombie's HP:" + zombieHealth);
                     String taisteluToiminto = scanner.nextLine().toUpperCase();
 
@@ -176,7 +176,6 @@ public class Main {
                         if (taisteluToiminto.matches("KNIFE") && (Item.inventory.contains("KNIFE"))) {
                             playerDamage += 5;
                         } else if (taisteluToiminto.matches("KNIFE") && (!Item.inventory.contains("KNIFE"))) {
-//                            playerHealth -= zombieDamage/2;
                             System.out.println("You do not have knife, " +
                                     "but ended up looking for an imaginary one while" + " " + zombieName + " " + "almost dies in laughter, hahaa, he did already!");
                             continue;
