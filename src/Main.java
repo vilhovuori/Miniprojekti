@@ -206,7 +206,7 @@ public class Main {
                             break;
 
                         } else {
-                            System.out.println("You are victorious! YOU KILLED THE ZOMBIE, but for how long does it stay dead!");
+                            System.out.println("You are victorious!! YOU KILLED THE ZOMBIE, but for how long does it stay dead!");
                             if (zombieKilledStatus == 0) {
                                 System.out.println("You found a key.");
 //                                ui.take("KEY");
