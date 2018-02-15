@@ -53,7 +53,7 @@ public class Item {
     static public boolean useableInRoom(String target, HashMap<String, Item> itemit) {       //metodi käy läpi taulukon itemit. Jos item löytyy listalta sekä
         String[] taulukko = {"KNIFE", "KEY","COFFEE", "LETTER","WATER","WIRE"};                       //item on samassa paikassa kun pelaaja, palautuu true. Jos ei ole, peli jatkuu
         for (String s : taulukko) {
-            if (itemit.containsKey(s) && itemit.get(target).targetRoom == Main.presentRoom) {
+            if (itemit.containsKey(s) && (itemit.get(target).targetRoom == Main.presentRoom || itemit.get(target).targetRoom.getRoomNumber() == 10000)) {
                 return true;
             } else {
                 continue;
