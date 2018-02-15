@@ -84,7 +84,7 @@ public class Main {
                 "You notice the coffee maker in the corner, but some scoundrel has stolen the electric wire.\n" +
                 "You need coffee to survive. Go explore your surroundings... ");
 
-        while (coffeeMachineStatus<3) {
+        while (coffeeMachineStatus < 3) {
             try {
                 System.out.println("What do you wish to do, " + name + "?");
                 String command = scanner.nextLine();
@@ -109,9 +109,9 @@ public class Main {
                     System.out.println(presentRoom.getDescription());
 
                 } else if (verb.equals("USE") && Item.inventory.contains(target.toUpperCase())) {
-                    if (Item.useableInRoom(target,itemit)){
-                    kayttoEsine = ui.take(target);
-                    System.out.println(ui.use(target));
+                    if (Item.useableInRoom(target, itemit)) {
+                        kayttoEsine = ui.take(target);
+                        System.out.println(ui.use(target));
                     } else {
                         System.out.println("You cannot use this item in this room.");
                     }
@@ -213,42 +213,43 @@ public class Main {
                                 Item.inventory.contains("KEY");
                                 Item.inventory.add("KEY");
                                 zombieKilledStatus = 1;
-                                if ((Item.inventory.contains("KEY")) && zombieKilledStatus>=1) {
-                                    System.out.println("You already have this item");}
+                                if ((Item.inventory.contains("KEY")) && zombieKilledStatus >= 1) {
+                                    System.out.println("You already have this item");
+                                }
 
-                             //   knife.setItemLocation(null);
+                                //   knife.setItemLocation(null);
 
 
                             }
 
 
-                        break;
-                    }
+                            break;
+                        }
                     } else {
                         System.out.println("You don't need to use your head literally, but it is indeed needed to type something that is asked of you!");
                     }
 
 
+                }
 
-                }
-                System.out.println("You were able to make fresh coffee and continue your Java project. Congratulations!");
-                try (FileReader fr = new FileReader("end.txt");
-                     BufferedReader in = new BufferedReader(fr)) {
-                    StringBuilder teksti = new StringBuilder();
-                    String rivi;
-                    while ((rivi = in.readLine()) != null) {
-                        teksti.append(rivi).append("\n");
-                    }
-                    tulos = teksti.toString();
-                    System.out.println(tulos);
-                } catch (FileNotFoundException ex) {
-                    System.out.println("Virhe: tiedostoa ei löytynyt");
-                } catch (IOException ex) {
-                    System.out.println("Virhe: muu virhe lukiessa");
-                }
 
             }
 
+        }
+        System.out.println("You were able to make fresh coffee and continue your Java project. Congratulations!");
+        try (FileReader fr = new FileReader("end.txt");
+             BufferedReader in = new BufferedReader(fr)) {
+            StringBuilder teksti = new StringBuilder();
+            String rivi;
+            while ((rivi = in.readLine()) != null) {
+                teksti.append(rivi).append("\n");
+            }
+            tulos = teksti.toString();
+            System.out.println(tulos);
+        } catch (FileNotFoundException ex) {
+            System.out.println("Virhe: tiedostoa ei löytynyt");
+        } catch (IOException ex) {
+            System.out.println("Virhe: muu virhe lukiessa");
         }
     }
 }
