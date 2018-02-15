@@ -223,4 +223,3 @@ public class Tiina {
 
 */
 
-   Item letter = new Item("letter", building.get(1), new Room(null, 10000, null, null));

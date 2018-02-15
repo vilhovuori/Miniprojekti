@@ -39,13 +39,14 @@ public class Main {
         boolean gameStatus = true;
         int zombieKilledStatus = 0;
         int zombiecounter = 0;
+        int errorCount= 0;
 
 
         Item knife = new Item("knife", building.get(0), building.get(2));
         Item key = new Item("Key to the lock on the door", building.get(2), building.get(3));
         Item coffee = new Item("coffeebeans", building.get(0), building.get(4));
         Item wire = new Item("Electric wire for the coffee machine", building.get(3), building.get(4));
-        Item letter = new Item("letter", building.get(1), building.get(1));
+        Item letter = new Item("letter", building.get(1), new Room(null, 10000, null, null));
         Item water = new Item("water", building.get(5), building.get(4));
 
         Item.inventory.add("FIST");
@@ -137,9 +138,19 @@ public class Main {
                 }
             } catch (ArrayIndexOutOfBoundsException ex) {
                 System.out.println("Are you stupid? You can't do that.");
+                errorCount++;
+                if (errorCount==3){
+                    System.out.println("A little voice in your head says: Help me");
+                    errorCount = 0;
+                }
                 continue;
             } catch (NullPointerException ex) {
                 System.out.println("What were you thinking?!? You can't do that..");
+                errorCount++;
+                if (errorCount==3){
+                    System.out.println("A little voice in your head says: Help me");
+                    errorCount = 0;
+                }
                 continue;
             }
             String[] nimet = new String[]{
@@ -166,6 +177,21 @@ public class Main {
                 zombiecounter ++;
                 System.out.println("By the holy coffee beans, you have encountered a zombie, Coffee Zombie that creeps by the name of" + " " + randomnimi + "!" + " " +
                         "\nTime to take out your weapons, hopefully you brought more then your lefty and right. ");
+                try (FileReader fr = new FileReader("zombie.txt");
+                     BufferedReader in = new BufferedReader(fr)) {
+                    StringBuilder teksti = new StringBuilder();
+                    String rivi;
+                    while ((rivi = in.readLine()) != null) {
+                        teksti.append(rivi).append("\n");
+                    }
+                    tulos = teksti.toString();
+                    System.out.println(tulos);
+                } catch (FileNotFoundException ex) {
+                    System.out.println("Virhe: tiedostoa ei löytynyt");
+                } catch (IOException ex) {
+                    System.out.println("Virhe: muu virhe lukiessa");}
+
+
 
                 while (gameStatus==true) {
 
