@@ -9,6 +9,7 @@ public class Item {
     private String itemName;
     private Room itemLocation;
     private Room targetRoom;
+    static ArrayList <String> inventory = new ArrayList<>();
 
     public Item (String itemName, Room itemLocation, Room targetRoom){
         this.itemName = itemName;
@@ -32,7 +33,7 @@ public class Item {
         this.itemLocation = itemLocation;
     }
 
-    static ArrayList <String> inventory = new ArrayList<>();
+
 
 
     static public boolean löytyyköTargetHuoneesta (String target, HashMap<String, Item> itemit) {       //metodi käy läpi taulukon itemit. Jos item löytyy listalta sekä
