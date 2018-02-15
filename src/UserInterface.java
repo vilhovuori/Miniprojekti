@@ -30,8 +30,34 @@ public class UserInterface {
         return d;
     }
 
-    public String use() {
-        return "USE";
+    public String use(String esine) {
+        String u;
+        switch (esine) {
+            case "KNIFE":
+                u = "You hit the zombie with your knife.";
+                break;
+            case "KEY":
+                u = "You opened the door.";
+                break;
+            case "COFFEE":
+                u = "You put the coffee in the coffee machine.";
+                break;
+            case "ELECTRICWIRE":
+                u = "The coffee machine is turned on.";
+                Main.building.get(4).setDescription("Älämölö");
+                break;
+            case "LETTER":
+                u = "You openen the letter and it says: 'Instructions for good coffee: take some fresh water and aromatic coffee beans.'";
+                break;
+            case "WATER":
+                u = "You put water in the coffee machine";
+                break;
+            default:
+                u = "You cannot use this item here.";
+                break;
+        }
+        return u;
+
     }
 
     public String take(String esine) {
@@ -48,9 +74,11 @@ public class UserInterface {
                 break;
             case "ELECTRICWIRE":
                 e = "electricwire";
+
                 break;
             case "LETTER":
                 e = "letter";
+
                 break;
             case "WATER":
                 e = "water";
