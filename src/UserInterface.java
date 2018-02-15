@@ -83,7 +83,7 @@ public class UserInterface {
             case "KNIFE":
                 e = "KNIFE";
                 String s1 = Main.building.get(0).getDescription();
-                String replaceString1 = s1.replace(" A knife is lying on the floor.", "");
+                String replaceString1 = s1.replace("A knife is lying on the floor and it is bloody, but who cares.", "");
                 Main.building.get(0).setDescription(replaceString1);
                 break;
             case "KEY":
@@ -99,7 +99,7 @@ public class UserInterface {
             case "WIRE":
                 e = "WIRE";
                 String s4 = Main.building.get(3).getDescription();
-                String replaceString4 = s4.replace("The wire to the coffee maker lies on the table the middle of the room.", "");
+                String replaceString4 = s4.replace("The wire to the coffee maker lies on the table the middle of the room, may the scoundrel rest in peace.", "");
                 Main.building.get(3).setDescription(replaceString4);
                 break;
             case "LETTER":

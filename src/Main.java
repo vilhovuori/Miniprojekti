@@ -75,14 +75,14 @@ public class Main {
         } catch (IOException ex) {
             System.out.println("Virhe: muu virhe lukiessa");
         }
-        System.out.println("\033[31;1mWelcome to JavaQuest, may I know your name so we can start writing your tombstone?\033[0m");
+        System.out.println("\nWelcome to JavaQuest, may I know your name so we can start writing your tombstone?");
 
         String name = scanner.nextLine();
         player.setPlayerName(name);
-        System.out.println("\033[34m\nIt's 5.30 pm. You are all alone in the Academy classroom, working hard on your programming project." +
+        System.out.println("\nIt's 5.30 pm. You are all alone in the Academy classroom, working hard on your programming project." +
                 "\nYour brain is starting to overload from all the fore-loops, so you feel the urge to sip a cup of steaming hot coffee.\n" +
                 "You notice the coffee maker in the corner, but some scoundrel has stolen the electric wire.\n" +
-                "You need coffee to survive. Go explore your surroundings... (If you need help to get started, type command 'help me')\033[0m ");
+                "You need coffee to survive. Go explore your surroundings... (If you need help to get started, type command 'help me')");
 
         while (coffeeMachineStatus < 3 && gameStatus == true ) {
             try {
