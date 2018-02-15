@@ -83,10 +83,10 @@ public class UserInterface {
                 String replaceString2=s2.replace("A bag of freshly ground coffee is placed on one of the dining tables.","");
                 Main.building.get(0).setDescription(replaceString2);
                 break;
-            case "ELECTRICWIRE":
-                e = "electricwire";
+            case "WIRE":
+                e = "wire";
                 String s4=Main.building.get(3).getDescription();
-                String replaceString4=s4.replace("The electric wire to the coffee maker lies on the table the middle of the room.","");
+                String replaceString4=s4.replace("The wire to the coffee maker lies on the table the middle of the room.","");
                 Main.building.get(3).setDescription(replaceString4);
                 break;
             case "LETTER":
