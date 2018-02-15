@@ -53,13 +53,13 @@ public class UserInterface {
                 Item.inventory.remove("COFFEE");
 
                 break;
-            case "ELECTRICWIRE":
+            case "WIRE":
                 u = "The coffee machine is turned on.";
                 Juuso.coffeeMachineStatus = Juuso.coffeeMachineStatus + 1;
                 String s3 = Main.building.get(4).getDescription();
                 String replaceString3 = s3.replace("A coffee maker stands in the corner, but there's no electric wire.", "A powered coffee maker stands in the corner.");
                 Main.building.get(4).setDescription(replaceString3);
-                Item.inventory.remove("ELECTRICWIRE");
+                Item.inventory.remove("WIRE");
                 break;
             case "LETTER":
                 u = "You opened the letter and it says: 'Instructions for good coffee: take some fresh water and aromatic coffee beans.'";
