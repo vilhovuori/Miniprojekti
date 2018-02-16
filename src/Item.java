@@ -4,14 +4,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-/* Tässä luokassa luodaan Item-olioiden konstruktori sekä Arraylistit. Inventory-listaan kerätään pelaajan keräämät itemit ja usedItems-listaan
-  * kerätään itemit, jotka on käytetty.
-   * ItemInRoom-metodi käy läpi taulukon, johon on kerätty pelin esineet ja etsii pelaajan syöttämää esinettä niistä.
-   * Jos syötetty esine löytyy taulukosta sekä pelaaja on sillä hetkellä samassa huoneessa kuin pelaajan syöttämä esine, palautuu true.
-   * Kutsutaan main-luokasta silloin kun halutaan tarkistaa, onko pelaajalla jo olemassa jokin esine, ja jos on sitä ei voi ottaa uudestaan.
-   *
-   * Pitkälti samat toiminnot esiintyy metodissa usableInRoom. Eli kun pelaaja haluaa käyttää jotain esinettä, metodi tarkistaa onko esinettä mahdollista
-   * käyttää kyseisessä huoneessa. Kunkin esineen käyttö on sidottu vain yhteen tiettyyn huoneeseen. Ainoastaan letterin voi lukea kaikissa huoneissa*/
 
 public class Item {
 
@@ -27,10 +19,10 @@ public class Item {
         this.targetRoom = targetRoom;
     }
 
-    static public boolean itemInRoom (String target, HashMap<String, Item> itemit) {       //metodi käy läpi taulukon itemit. Jos item löytyy listalta sekä
-        String[] taulukko = {"KNIFE", "KEY","COFFEE", "WIRE", "LETTER", "WATER"};                       //item on samassa paikassa kun pelaaja, palautuu true. Jos ei ole, peli jatkuu
+    static public boolean itemInRoom (String target, HashMap<String, Item> itemit) {       //metodi käy läpi taulukon esineet.
+        String[] taulukko = {"KNIFE", "KEY","COFFEE", "WIRE", "LETTER", "WATER"};          //Jos etsitty esine löytyy listalta sekä
         for (String s : taulukko) {
-            if (itemit.containsKey(s) && itemit.get(target).itemLocation == Main.presentRoom) {
+            if (itemit.containsKey(s) && itemit.get(target).itemLocation == Main.presentRoom) {     //esine on samassa paikassa kun pelaaja, palautuu true.
                 return true;
             } else {
                 continue;
@@ -39,9 +31,9 @@ public class Item {
         return false;
     }
 
-    static public boolean useableInRoom(String target, HashMap<String, Item> itemit) {       //metodi käy läpi taulukon itemit. Jos item löytyy listalta sekä
-        String[] taulukko = {"KNIFE", "KEY","COFFEE", "LETTER","WATER","WIRE"};                       //item on samassa paikassa kun pelaaja, palautuu true. Jos ei ole, peli jatkuu
-        for (String s : taulukko) {
+    static public boolean useableInRoom(String target, HashMap<String, Item> itemit) {       //metodissa pääosin sama idea kuin yllä.
+        String[] taulukko = {"KNIFE", "KEY","COFFEE", "LETTER","WATER","WIRE"};              //tarkistaa onko esine taulukossa ja sen lisäksi katsoo onko esine samassa
+        for (String s : taulukko) {                                                     //siinä huoneessa, jossa sitä voi käyttää.
             if (itemit.containsKey(s) && (itemit.get(target).targetRoom == Main.presentRoom || itemit.get(target).targetRoom.getRoomNumber() == 10000)) {
                 return true;
             } else {
