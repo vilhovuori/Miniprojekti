@@ -166,7 +166,7 @@ public class Main {
             /*names for zombies */
             String[] nimet = new String[]{
                     "Aino", "Aleksi H.", "Aleksi P", "Jani", "Johanna J", "Heidi K", "Joni",
-                    "Tom", "Juuso", "Hanna-Leena", "Johanna L.", "Milla", "Vellu", "Heidi N",
+                    "Tom", "Juuso", "Hanna-Leena", "Johanna L", "Milla", "Vellu", "Heidi N",
                     "Sami", "Outi", "Elina", "Renne", "Olli", "Toni", "Paula", "Leena", "Nikita",
                     "Tiina K", "Tiina E", "Antti", "Ville", "Waltteri", "Satu", "Tommi", "Samu"
             };
