@@ -155,7 +155,7 @@ public class Main {
                 }
                 continue;
             } catch (NullPointerException ex) {
-                System.out.println("What were you thinking?!? You can't do that..");
+                System.out.println("What were you thinking?!? You can't do that...");
                 errorCount++;
                 if (errorCount == 3) {
                     System.out.println("A little voice in your head says: Help me");
@@ -168,14 +168,14 @@ public class Main {
                     "Aino", "Aleksi H.", "Aleksi P", "Jani", "Johanna J", "Heidi K", "Joni",
                     "Tom", "Juuso", "Hanna-Leena", "Johanna L", "Milla", "Vellu", "Heidi N",
                     "Sami", "Outi", "Elina", "Renne", "Olli", "Toni", "Paula", "Leena", "Nikita",
-                    "Tiina K", "Tiina E", "Antti", "Ville", "Waltteri", "Satu", "Tommi", "Samu"
+                    "Tiina K", "Tiina E", "Antti", "Ville", "Waltteri", "Satu", "Tommi", "Samu", "Maisa", "Jukka"
             };
             List<String> nimilista = new ArrayList<>(Arrays.asList(nimet));
             Collections.shuffle(nimilista);
             String randomnimi = nimilista.get(0);
 
             Random randomGenerator = new Random();
-            int playerRandomDamage = randomGenerator.nextInt(15)+1;
+            int playerRandomDamage = randomGenerator.nextInt(15) + 1;
             int zombieRandomDamage = randomGenerator.nextInt(20);
             int playerHealth = 20;
             int playerDamage = playerRandomDamage;
@@ -183,7 +183,7 @@ public class Main {
             int zombieDamage = zombieRandomDamage;
             String zombieName = randomnimi;
 
-/* Fight with the zombie. Zombie never dies and resurrects if a new command is inputted after fight */
+            /* Fight with the zombie. Zombie never dies and resurrects if a new command is inputted after fight */
             while (presentRoom == building.get(2) && zombieHealth == 15) {
                 zombiecounter++;
                 System.out.println("By the holy coffee beans, you have encountered a zombie, Coffee Zombie that creeps by the name of" + " " + randomnimi + "!" + " " +
